@@ -1,0 +1,12 @@
+/* Place your CSS styles in this file */
+
+body {
+    background-color: rgb(240,240,240);
+}
+
+h1 {
+    text-align: left;
+    font-family: "Source Sans Pro", 'Courier New', Courier, monospace;
+    font-weight: normal;
+    color: rgb(50,50,100);
+}
