@@ -12,13 +12,25 @@
     </head>
 
     <body>
+      <header>
+        <h1>Tyler Headley</h1>
+        <h3>2022 ISP</h3>
 
-        <h1>Hello World</h1>
-        <a href="./aboutme">About me</a>
-
+        <nav>
+          <a href="./aboutme">About me</a>
+          <a href="#caeser">Caeser Ciphers</a>
+        </nav>
         <!-- Load external JavaScript -->
-        <script src="scripts.js"></script>
-
+        <!-- <script src="scripts.js"></script> -->
+      <header>
+      <main>
+        <section id="caeser">
+          <p>Caeser Cipher's are a commonly known cipher. They shift the alphabet a certain number of letters to encode a message.</p>
+          <form>
+            <label for="inpttext">Enter the text you would like to encrypt: </label>
+            <input type="text" maxlength="50" id="inpttext" name="inpttext">
+            <input type="submit"></input>
+          </form>
     </body>
 
 </html>
