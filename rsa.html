@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <Title>ISP - RSA</Title>
+    <!-- Load external CSS styles -->
+    <!-- Load external JavaScript -->
+    <script type="text/javascript" src="encryption.js"></script>
+		<script>
+		function readForm() {
+			const plaintext = document.getElementById("text").elements[0].value;
+			document.getElementById("displayInput").innerHTML = `Your input is ${plaintext}`;
+			//const key = Math.floor(Math.random() * 25 + 1); // generate random number 1-25
+			//const ciphertext = caesarCipherEncrypt(plaintext, key);
+			//document.getElementById("displayKey").innerHTML = `Random key: ${key}`;
+			//document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext}`;
+		}
+		</script>
+  </head>
+
+  <body>
+		<header>
+			<h1>Tyler Headley</h1>
+			<h3>2022 ISP</h3>
+			<nav>
+				<a href="./aboutme">About me</a>
+				<a href="./caesarcipher">Caesar Ciphers</a>
+				<a href="./RSA">Caesar Ciphers</a>
+				<a href="./ECC">Caesar Ciphers</a>
+				<a href="./AES">Caesar Ciphers</a>
+			</nav>
+		</header>
+		<main>
+			<p>RSA is a form of public key cryptography invented by Rivest, Shamir, and Adleman in the 70's</p>
+			<form id="text">
+				<label for="inpttext">Enter the text you would like to encrypt: </label>
+				<input type="text" maxlength="50" id="inpttext" name="inpttext">
+				<button onclick="readForm()" form="text">Submit</button>
+			</form>
+			<p id="displayInput"></p>
+		</main>
+  </body>
+</html>
