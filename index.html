@@ -14,7 +14,7 @@
     <body>
       <header>
         <h1>Tyler Headley</h1>
-        <h3>2022 ISP!</h3>
+        <h3>2022 ISP</h3>
 
         <nav>
           <a href="./aboutme">About me</a>
@@ -32,7 +32,7 @@
             <input type="submit"></input>
             <script>
               var nameValue = document.getElementById("inpttext").value;
-              console.log(nameValue);
+              document.body.innerHTML = `<p>Your input is ${nameValue}.`;
             </script>
           </form>
     </body>
