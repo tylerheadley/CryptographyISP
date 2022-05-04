@@ -5,7 +5,7 @@ function caesarCipherEncrypt(plaintext) {
     const asciiVal = plaintext.charCodeAt(i);
     let newAscii = asciiVal;
     if (asciiVal >= 97 && asciiVal <= 122 || asciiVal >= 65 && asciiVal <= 90) {
-      newAscii += key;
+      newAscii += key; // apply shift if letter
       if (newAscii > 122) {
         newAscii = newAscii - 26;
       }
