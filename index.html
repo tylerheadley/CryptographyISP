@@ -26,10 +26,14 @@
       <main>
         <section id="caeser">
           <p>Caeser Cipher's are a commonly known cipher. They shift the alphabet a certain number of letters to encode a message.</p>
-          <form>
+          <form id="ccform" action="" method="POST">
             <label for="inpttext">Enter the text you would like to encrypt: </label>
             <input type="text" maxlength="50" id="inpttext" name="inpttext">
             <input type="submit"></input>
+            <script>
+              var nameValue = document.getElementById("inpttext").value;
+              console.log(nameValue);
+            </script>
           </form>
     </body>
 
