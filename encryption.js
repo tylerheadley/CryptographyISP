@@ -10,7 +10,7 @@ function caesarCipherEncrypt(plaintext) {
         newAscii = newAscii - 26;
       }
     }
-    ciphertext += String.fromCharCode(asciiVal);
+    ciphertext += String.fromCharCode(newAscii);
   }
   return ciphertext;
 }
