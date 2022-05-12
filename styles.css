@@ -36,15 +36,15 @@ h1 {
     font-family: 'Courier New';
     font-weight: bold;
     font-size: 24px;
-    margin: 5px 40px;
-    padding: 5px;
+    margin: 0px 40px;
+    padding: 50px 5px 5px;
 }
 
 h6 {
     text-align: left;
     font-family: 'Courier New';
     font-size: 18px;
-    margin: 5px 40px;
+    margin: 0px 40px;
     padding: 5px;
 }
 
