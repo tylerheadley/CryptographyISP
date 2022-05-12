@@ -36,8 +36,8 @@ h1 {
     font-family: 'Courier New';
     font-weight: bold;
     font-size: 24px;
-    margin: 10px 100px;
-    padding: 10px;
+    margin: 5px 40px;
+    padding: 5px;
 }
 
 h6 {
@@ -45,15 +45,15 @@ h6 {
     font-family: 'Courier New';
     font-weight: bold;
     font-size: 20px;
-    margin: 10px 100px;
-    padding: 10px;
+    margin: 5px 40px;
+    padding: 5px;
 }
 
 p {
     font-family: 'Courier New';
     font-size: 14px;
     padding: 10px;
-    margin: 10px 25px;
+    margin: 10px 20px;
     max-width: 600px;
 }
 
