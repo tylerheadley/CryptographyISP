@@ -22,12 +22,8 @@ a.isp {
 }
 
 a:hover {
-    color: rgb(29, 27, 30) !important;
+    color: rgb(29, 27, 30);
     background: rgb(75, 255, 66);
-}
-
-a:visited {
-    color: rgb(75, 255, 66);
 }
 
 body {
