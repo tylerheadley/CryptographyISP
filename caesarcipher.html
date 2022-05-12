@@ -23,14 +23,14 @@
       <h1>Caesar Cipher</h1>
       <p>Caesar Ciphers were an early form of encryption used for communicating military strategy securly by Julius Caesar in 100 B.C. 
         They shift the alphabet a certain number of letters to encode a message.</p>
-      <div id="text">
+      <form id="text">
         <label for="inpttext">Enter the text you would like to encrypt: </label>
         <input type="text" maxlength="50" id="inpttext" name="inpttext" autocomplete="off">
         <!--
         <label for="inptkey"><em>(optional)</eM> select a key from 1-25: </label>
         <input type="number" min="1" max="25" step="1" id="inptkey" name="inptkey" autocomplete="off"> -->
         <button onclick="readForm()">Submit</button>
-      <div>
+      </form>
       <script>
       function readForm() {
         const plaintext = document.getElementById("text").elements[0].value;
