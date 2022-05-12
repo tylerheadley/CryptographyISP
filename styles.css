@@ -22,7 +22,7 @@ a.isp {
 }
 
 a:hover {
-    color: rgb(29, 27, 30);
+    color: rgb(29, 27, 30) !important;
     background: rgb(75, 255, 66);
 }
 
