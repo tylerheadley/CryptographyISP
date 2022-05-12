@@ -14,7 +14,7 @@ nav {
 a {
     font-family: "Courier New";
     font-size: 18px;
-    color: rgb(22, 160, 229)
+    color: rgb(75, 255, 66);
     height: 100%;
     width: 200px;
     padding: 0 40;
@@ -22,6 +22,10 @@ a {
 
 a:hover {
     background: rgba(29, 27, 30, 0.75)
+}
+
+a:visited {
+    color: rgb(75, 255, 66);
 }
 
 body {
