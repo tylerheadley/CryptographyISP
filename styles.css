@@ -33,10 +33,28 @@ body {
 
 h1 {
     text-align: left;
-    font-family: "Source Sans Pro", 'Courier New', Courier, monospace;
-    font-weight: normal;
-    color: rgb(50,50,100);
+    font-family: 'Courier New';
+    font-weight: bold;
+    font-size: 24px;
+    margin: 10px 100px;
+    padding: 10px;
 }
 
+h6 {
+    text-align: left;
+    font-family: 'Courier New';
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px 100px;
+    padding: 10px;
+}
+
+p {
+    font-family: 'Courier New';
+    font-size: 14px;
+    padding: 10px;
+    margin: 10px 25px;
+    max-width: 600px;
+}
 
 
