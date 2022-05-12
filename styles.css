@@ -1,7 +1,7 @@
 /* Place your CSS styles in this file */
 
 body {
-    background-color: rgb(180,240,240);
+    background-color: rgb(19, 183, 183);
     font-family: "Source Sans Pro", 'Courier New', Courier, monospace;
 }
 
@@ -10,4 +10,8 @@ h1 {
     font-family: "Source Sans Pro", 'Courier New', Courier, monospace;
     font-weight: normal;
     color: rgb(50,50,100);
+}
+
+p {
+    background-image: "/lock.jpg";
 }
