@@ -6,6 +6,10 @@ nav {
     margin: 0px;
 }
 
+main {
+    width: 100%;
+}
+
 a {
     font-family: "Courier New";
     font-size: 40px;
@@ -29,6 +33,7 @@ a:hover {
 body {
     background-color: rgb(255, 255, 255);
     font-family: "Source Sans Pro", 'Courier New', Courier, monospace;
+    width: 100%
 }
 
 h1 {
