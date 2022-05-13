@@ -16,6 +16,9 @@
             key = Math.floor(Math.random() * 25 + 1); // generate random number 1-25
             document.getElementById("displayKey").innerHTML = `Random key: ${key}`;
           }
+          else if (key > 25 || key < 1) {
+            document.getElementById("displayKey").innerHTML = 'ERR: Enter a key value from 1-25, or leave the field blank';
+          }
           else document.getElementById("displayKey").innerHTML = `Your input key is: ${key}`;
           const ciphertext = caesarCipherEncrypt(plaintext, key);
           
