@@ -73,4 +73,10 @@ p {
     font-size: 14px;
 }
 
+form {
+    position: sticky;
+    top: 250px;
+    right: 100px;
+}
+
 
