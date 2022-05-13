@@ -4,9 +4,9 @@ nav {
     height: 100px;
     padding: 0px;
     margin: 0px;
-    position: relative;
-    right: 15px;
-    bottom: 15px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 main {
