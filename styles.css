@@ -59,12 +59,17 @@ h6 {
     padding: 0px;
 }
 
-p {
+article {
     font-family: 'Courier New';
     font-size: 14px;
     padding: 10px;
     margin: 10px 20px;
     max-width: 600px;
+}
+
+p {
+    font-family: 'Courier New';
+    font-size: 14px;
 }
 
 
