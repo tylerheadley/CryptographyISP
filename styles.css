@@ -74,7 +74,7 @@ p {
 }
 
 .input {
-    position: relative;
+    position: absolute;
     top: 150px;
     right: 100px;
 }
