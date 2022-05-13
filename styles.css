@@ -73,9 +73,9 @@ p {
     font-size: 14px;
 }
 
-form {
-    position: absolute;
-    top: 250px;
+.input {
+    position: relative;
+    top: 150px;
     right: 100px;
 }
 
