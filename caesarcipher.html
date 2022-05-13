@@ -21,11 +21,11 @@
     </header>
     <main>
       <p>Caesar Ciphers were a primitive form of encryption. They shift the alphabet a certain number of letters to encode a message.</p>
-      <form id="text">
+      <div id="text">
         <label for="inpttext">Enter the text you would like to encrypt: </label>
         <input type="text" maxlength="50" id="inpttext" name="inpttext" autocomplete="off">
         <button onclick="readForm()">Submit</button>
-      </form>
+      </div>
       <script>
       function readForm() {
         const plaintext = document.getElementById("text").elements[0].value;
