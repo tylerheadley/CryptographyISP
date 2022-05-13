@@ -34,7 +34,9 @@
       <form id="text">
         <label for="inpttext">Enter the text you would like to encrypt: </label>
         <input type="text" maxlength="50" id="inpttext" name="inpttext" autocomplete="off">
-        
+        <br>
+        <label for="inpttext"><em>(Optional)</em> Enter a key from 1-25: </label>
+        <input type="number" min="1" max=25 step="1" id="inptkey" name="inptkey" autocomplete="off">
       </form>
       <button onclick="readForm()">Submit</button>
       </script>
