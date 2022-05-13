@@ -24,6 +24,7 @@
       <form id="text">
         <label for="inpttext">Enter the text you would like to encrypt: </label>
         <input type="text" maxlength="50" id="inpttext" name="inpttext" autocomplete="off">
+        <button onclick="readForm()">Submit</button>
       </form>
       <script>
       function readForm() {
@@ -35,7 +36,6 @@
         document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext}`;
       }
       </script>
-      <button onclick="readForm()">Submit</button>
       <p id="displayInput"></p>
       <p id="displayKey"></p>
       <p id="displayOutput"></p>
