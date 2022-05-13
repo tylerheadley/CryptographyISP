@@ -17,12 +17,13 @@
             document.getElementById("displayKey").innerHTML = `Random key: ${key}`;
           }
           else if (key > 25 || key < 1) {
-            document.getElementById("displayKey").innerHTML = 'ERR: Enter a key value from 1-25, or leave the field blank';
+            document.getElementById("displayKey").innerHTML = 'ERR: Enter a key value from 1-25, or leave the field blank for a random key';
           }
-          else document.getElementById("displayKey").innerHTML = `Your input key is: ${key}`;
+          else {
+            document.getElementById("displayKey").innerHTML = `Your input key is: ${key}`;
+          }
           const ciphertext = caesarCipherEncrypt(plaintext, key);
           
-          document.getElementById("displayKey").innerHTML = `Random key: ${key}`;
           document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext}`;
         }
         </script>
