@@ -43,7 +43,7 @@
       <article>Caesar Ciphers were an early form of encryption used for communicating military strategy securly by Julius Caesar in 100 B.C. 
         They shift the alphabet a certain number of letters to encode a message.</article>
         <br>
-      <div class="input">
+      <div class="alg">
         <form id="text">
           <label for="inpttext">Enter the text you would like to encrypt: </label>
           <input type="text" maxlength="50" id="inpttext" name="inpttext" autocomplete="off">
@@ -52,11 +52,10 @@
           <input type="number" min="1" max=25 step="1" id="inptkey" name="inptkey" autocomplete="off">
         </form>
         <button onclick="readForm()">Submit</button>
+        <p id="displayInput"></p>
+        <p id="displayKey"></p>
+        <p id="displayOutput"></p>
       </div>
-      </script>
-      <p id="displayInput"></p>
-      <p id="displayKey"></p>
-      <p id="displayOutput"></p>
     </main>
   </body>
 </html>

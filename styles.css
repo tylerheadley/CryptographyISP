@@ -45,7 +45,7 @@ body {
     width: 100%
 }
 
-h1, h6, article, p {
+h1, h6, article {
     font-family: 'Courier New';
     text-align: left;
     margin: 0px 150px;
@@ -73,7 +73,7 @@ p {
     font-size: 14px;
 }
 
-.input {
+.alg {
     position: absolute;
     top: 150px;
     right: 100px;
