@@ -10,6 +10,11 @@ main {
     width: 100%;
 }
 
+html {
+    margin: 0px;
+    padding: 0px;
+}
+
 a {
     font-family: "Courier New";
     font-size: 40px;
