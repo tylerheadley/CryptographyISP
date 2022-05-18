@@ -71,6 +71,8 @@ article {
 p {
     font-family: 'Courier New';
     font-size: 14px;
+    position: relative;
+    top: 200px;
 }
 
 .alg {
