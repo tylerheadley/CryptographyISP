@@ -6,7 +6,11 @@
 		<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
 		<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 		<py-script>
-			print("Test")
+			def readForm():
+				input = Element("inpttext").element.value
+				Element("displayInput").element.innerText = input
+				output = rsaEncrypt(input)
+				Element("displayOutput").element.innertext = output
 		</py-script>
   </head>
 
@@ -23,12 +27,19 @@
 		</header>
 		<main>
 			<p>RSA is a form of public key cryptography invented by Rivest, Shamir, and Adleman in the 70's</p>
-			<form id="text">
-				<label for="inpttext">Enter the text you would like to encrypt: </label>
-				<input type="text" maxlength="50" id="inpttext" name="inpttext">
-				<button onclick="readForm()" form="text">Submit</button>
-			</form>
-			<p id="displayInput"></p>
+			<div class="alg">
+        <form id="text">
+          <label for="inpttext">Enter the text you would like to encrypt: </label>
+          <input type="text" maxlength="50" id="inpttext" name="inpttext" autocomplete="off">
+          <br>
+          <label for="inpttext"><em>(Optional)</em> Enter a key from 1-25: </label>
+          <input type="number" min="1" max=25 step="1" id="inptkey" name="inptkey" autocomplete="off">
+        </form>
+        <button pys-onClick="readForm()">Submit</button>
+        <p id="displayInput"></p>
+        <p id="displayKey"></p>
+        <p id="displayOutput"></p>
+      </div>
 		</main>
   </body>
 </html>
