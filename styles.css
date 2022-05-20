@@ -75,17 +75,11 @@ p {
     top: 200px;
 }
 
-form {
-    font-family: 'Courier New';
-    font-size: 14px;
-    position: relative;
-    top: 200px;
-}
-
 .alg {
     position: absolute;
     top: 150px;
     right: 100px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 
