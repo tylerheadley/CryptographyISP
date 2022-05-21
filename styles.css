@@ -103,4 +103,8 @@ input[type="text"] {
     resize: none;
 }
 
+div {
+    height: 40px;
+}
+
 
