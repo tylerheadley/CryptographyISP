@@ -61,6 +61,6 @@ def rsaCipher(m):
 
 def rsaEncrypt(text):
     m = textToAscii(text)
-    return m
+    ciphertext = rsaCipher(m)
+    return ciphertext
 
-rsaEncrypt("Hello World!")

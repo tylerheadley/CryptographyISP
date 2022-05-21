@@ -40,14 +40,15 @@
   </body>
 -->
 <div>Type an sample input here</div>
-<input type="text" id="test-input"/>
+<input type="text" id="input"/>
 <button id="submit-button" type="submit" pys-onClick="my_function">Submit</button>
-<div id="test-output"></div>
+<div id="output"></div>
 
 <py-script>
 def my_function():	
-	text = Element('test-input').element.value
-	Element('test-output').element.innerText = text
+	text = Element('input').element.value
+	ciphertext = rsaEncrypt(text)
+	Element('output').element.innerText = ciphertext
 </py-script>
 
 </body>
