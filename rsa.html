@@ -39,19 +39,15 @@
 		</main>
   </body>
 -->
-<div>Type a sample input here poop</div>
-<input type="text" id="test-input"/>
-<button id="submit-button" type="submit" pys-onClick="my_function">Submit</button>
-<div id="test-output"></div>
+<div>Type a sample input here 1.0</div>
+<input type="text" id="input"/>
+<button id="submit-button" type="submit" pys-onClick="func">Submit</button>
+<div id="output"></div>
 
 <py-script>
-
-	def my_function(*args, **kwargs):
-	
-
-			text = Element('test-input').element.value	
-	
-			Element('test-output').element.innerText = text
+	def func(*args, **kwargs):
+			text = Element('input').element.value	
+			Element('output').element.innerText = text
 </py-script>
 
 </body>
