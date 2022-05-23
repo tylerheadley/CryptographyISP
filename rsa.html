@@ -14,7 +14,7 @@
 		  const p = generateRandomPrime(100, 1000);
 		  const q = generateRandomPrime(100, 1000);
           document.getElementById("displayKey").innerHTML = `p = ${p}, q = ${q}.`;
-          const ciphertext = rsaEncrypt(plaintext, key);
+          const ciphertext = rsaEncrypt(text, key);
           
           document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext.toString()}`;
         }
