@@ -14,7 +14,7 @@
 					q = randomKey()
 					ciphertext = rsaEncrypt(text, p, q)
 					Element('plaintext').element.innertext = text
-					Element('key').element.innertext = "p = " + p + ", q = " + q
+					Element('key').element.innertext = "p = " + str(p) + ", q = " + str(q)
 					Element('ciphertext').element.innerText = ciphertext
 
 			def randomKey(n = 16):
