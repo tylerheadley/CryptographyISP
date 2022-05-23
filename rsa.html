@@ -1,117 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <Title>ISP - RSA</Title>
-		<link rel="stylesheet" href="styles.css">
-		<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-		<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-		<py-script>
-			import random
-
-			def func(*args, **kwargs):
-					text = Element('input').element.value
-					p = randomKey()
-					q = randomKey()
-					ciphertext = rsaEncrypt(text, p, q)
-					Element('plaintext').element.innertext = text
-					Element('key').element.innertext = "p = " + str(p) + ", q = " + str(q)
-					Element('ciphertext').element.innerText = ciphertext
-
-			def randomKey(n = 16):
-					#generate possible key
-					key = random.randrange(2**(n-1)+1, 2**n-1)
-			
-					#check if prime
-					if key % 2 == 0 or key % 3 == 0:
-							return randomKey()
-					i = 5
-					while (i**2 <= key):
-							if key % i == 0 or key % (i+2) == 0:
-									return randomKey()
-							i += 6
-					return key
-			
-			# memory efficient computation of b^e mod m
-			# could also be done using Math.pow(b, e, m)
-			def modExp(base, exp, mod):
-					c = 1
-					e = 0
-						
-					while (e < exp):
-							c = (base * c) % mod
-							e += 1
-			
-					return c
-			
-			def textToAscii(text):
-					m = ""
-			
-					for char in text:
-							ascii = str(ord(char))#[2:]
-							m += ascii
-			
-					return int(m)
-			
-			def rsaCipher(m, p, q): 
-			
-					n = p * q
-			
-					phi = (p-1) * (q-1)
-			
-					e = 3
-			
-					# compute ciphertext
-					c = modExp(m, e, n)
-					
-					return c
-			
-			def rsaEncrypt(text, p, q):
-					m = textToAscii(text)
-					ciphertext = rsaCipher(m, p, q)
-					return ciphertext
-		</py-script>
+      <meta charset="utf-8">
+      <title>ISP - Caesar Cipher</title>
+      <!-- Load external CSS styles -->
+      <link rel="stylesheet" href="styles.css">
+      <!-- Load external JavaScript -->
+      <script type="text/javascript" src="rsa.js"></script>
+      <script>
+        function readForm() {
+          const text = document.getElementById("inpttext").value;
+          document.getElementById("displayInput").innerHTML = `Your input is ${text}`;
+          
+          //const ciphertext = rsaEncrypt(plaintext, key);
+          
+          //document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext}`;
+        }
+        </script>
   </head>
-<!--
   <body>
-		<header>
-			<nav>
-				<a href="./index">ISP</a>
-				<a href="./caesarcipher">Caesar Ciphers</a>
-				<a href="./rsa">RSA</a>
-				<a href="./ecc">ECC</a>
-				<a href="./aes">AES</a>
-				<a href="./aboutme">About</a>
-			</nav>
-		</header>
-		<main>
-			<p>RSA is a form of public key cryptography invented by Rivest, Shamir, and Adleman in the 70's</p>
-			<div class="alg">
-        <form id="text">
-          <label for="inpttext">Enter the text you would like to encrypt: </label>
-          <input type="text" maxlength="50" id="inpttext" name="inpttext" autocomplete="off">
-        </form>
-        <button pys-onClick="readForm()">Submit</button>
-        <p id="displayInput">here</p>
+    <header>
+      <nav>
+        <a class="isp" href="./index">ISP</a>
+        <a href="./caesarcipher">Caesar Ciphers</a>
+        <a href="./rsa">RSA</a>
+        <a href="./ecc">ECC</a>
+        <a href="./aes">AES</a>
+        <a href="./aboutme">About</a>
+      </nav>
+    </header>
+    <main>
+      <article>RSA 1.0</article>
+        <br>
+      <div class="alg">
+		<label for="inpttext">Enter the text you would like to encrypt: </label>
+		<input type="text" maxlength="50" id="inpttext" name="inpttext" autocomplete="off">
+        <button type="submit" onclick="readForm()">Submit</button>
+        <p id="displayInput"></p>
+        <p id="displayKey"></p>
         <p id="displayOutput"></p>
       </div>
-		</main>
+    </main>
   </body>
--->
-<div>Type a sample input here 1.0</div>
-<input type="text" id="input"/>
-<button id="submit-button" type="submit" pys-onClick="func">Submit</button>
-<div id="plaintext"></div>
-<div id="key"></div>
-<div id="ciphertext"></div>
-<!--
-<py-script>
-	def func(*args, **kwargs):
-			text = Element('input').element.value	
-
-			Element('output').element.innerText = text
-</py-script>
--->
-
-</body>
-
 </html>
