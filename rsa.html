@@ -47,8 +47,9 @@
 <py-script>
 	from js import console
 
-	def my_function():
+	def my_function(*args, **kwargs):
 	
+
 			text = Element('test-input').element.value	
 	
 			Element('test-output').element.innerText = text
