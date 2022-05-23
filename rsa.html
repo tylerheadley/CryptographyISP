@@ -6,11 +6,10 @@
 		<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
 		<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 		<py-script>
-			def readForm():
-				input = Element("inpttext").element.value
-				Element("displayInput").element.innerText = input
-				output = rsaEncrypt(input)
-				Element("displayOutput").element.innertext = output
+			def func(*args, **kwargs):
+					text = Element('input').element.value	
+		
+					Element('output').element.innerText = text
 		</py-script>
   </head>
 <!--
@@ -47,6 +46,7 @@
 <py-script>
 	def func(*args, **kwargs):
 			text = Element('input').element.value	
+
 			Element('output').element.innerText = text
 </py-script>
 
