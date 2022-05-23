@@ -9,9 +9,13 @@
 			import random
 
 			def func(*args, **kwargs):
-					text = Element('input').element.value	
-					ciphertext = rsaEncrypt(text)
-					Element('output').element.innerText = ciphertext
+					text = Element('input').element.value
+					p = randomKey()
+					q = randomKey()
+					ciphertext = rsaEncrypt(text, p, q)
+					Element('plaintext').element.innertext = text
+					Element('key').element.innertext = "p = " + p + ", q = " + q
+					Element('ciphertext').element.innerText = ciphertext
 
 			def randomKey(n = 16):
 					#generate possible key
@@ -48,10 +52,7 @@
 			
 					return int(m)
 			
-			def rsaCipher(m): 
-					# key generation
-					p = randomKey()
-					q = randomKey()
+			def rsaCipher(m, p, q): 
 			
 					n = p * q
 			
@@ -64,9 +65,9 @@
 					
 					return c
 			
-			def rsaEncrypt(text):
+			def rsaEncrypt(text, p, q):
 					m = textToAscii(text)
-					ciphertext = rsaCipher(m)
+					ciphertext = rsaCipher(m, p, q)
 					return ciphertext
 		</py-script>
   </head>
@@ -99,7 +100,9 @@
 <div>Type a sample input here 1.0</div>
 <input type="text" id="input"/>
 <button id="submit-button" type="submit" pys-onClick="func">Submit</button>
-<div id="output"></div>
+<div id="plaintext"></div>
+<div id="key"></div>
+<div id="ciphertext"></div>
 <!--
 <py-script>
 	def func(*args, **kwargs):
