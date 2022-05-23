@@ -11,10 +11,12 @@
         function readForm() {
           const text = document.getElementById("inpttext").value;
           document.getElementById("displayInput").innerHTML = `Your input is ${text}`;
+		  const p = generateRandomPrime(100, 1000);
+		  const q = generateRandomPrime(100, 1000);
+          document.getElementById("displayKey").innerHTML = `p = ${p}, q = ${q}.`;
+          const ciphertext = rsaEncrypt(plaintext, key);
           
-          //const ciphertext = rsaEncrypt(plaintext, key);
-          
-          //document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext}`;
+          document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext.toString()}`;
         }
         </script>
   </head>
