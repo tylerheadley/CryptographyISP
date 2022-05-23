@@ -105,9 +105,7 @@ function modExp(base, exp, mod) {
 }
 
 
-function rsaEncrypt(text) {
-  const p = generateRandomPrime(100, 1000); 
-  const q = generateRandomPrime(100, 1000); 
+function rsaEncrypt(text, p, q) {
 
   const n = p * q;
 
