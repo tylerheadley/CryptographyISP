@@ -95,6 +95,7 @@ function modInverse(a, m) {
 }
 
 function modExp(base, exp, mod) {
+
   let c = 1;
   
   for (let e = 0; e < exp; e++) {
@@ -116,8 +117,9 @@ function rsaEncrypt(text, p, q) {
   let m = [];
   for (let i = 0; i < text.length; i++) {
     let num = "";
-    while (num.length < 46) {
+    while (num.length < 46 && i < text.length) {
       num += text.charCodeAt(i).toString(2);
+      i++;
     }
     num = "0b" + num;
     m.push(Number(num));
@@ -139,6 +141,6 @@ function rsaEncrypt(text, p, q) {
   return ct;
 }
 
-rsaEncrypt("Hello");
+//rsaEncrypt("Hello World!", 5, 10); 
 
 
