@@ -97,6 +97,10 @@ img {
 
 span {
     font-weight: bold;
+    text-align: center;
 }
 
+.display {
+    height: 30px;
+}
 

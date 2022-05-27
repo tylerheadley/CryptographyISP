@@ -6,6 +6,11 @@
         <script type="text/javascript" href="aes.js"></script>
         <meta name="author" content="Tyler Headley">
         <meta name="description" content="Overview of Advanced Encryption Standard algorithm and provides example implementation.">
+        <script>
+            function callAES() {
+                aesEncrypt(document.getElementById("inpt"));
+            }
+        </script>
     </head>
     <body>
         <header>
@@ -18,7 +23,7 @@
             </nav>
         </header>
         <main>
-            <h3>Advanced Encryption Standard</h3>
+            <h1>Advanced Encryption Standard</h1>
             <article>
                 Advanced Encryption Standard (AES) is a cipher that was adopted by the NIST (National Institute for Standards and Technology) in 2001.
                 AES is a symmetric-key cipher, meaning that both parties must possess the same key in order to communicate. 
@@ -35,13 +40,14 @@
                 AES provides significantly better security than public key techniques for equivalent key sizes, and also performs significantly better than its predecessor.
             </article>
             <h5>My Implementation</h5>
+            <br>
             <div id="aesCipher">
                 <label for="input">Enter the text you would like to encrypt: </label>
-                <input type="text" id="input" autocomplete="off">
+                <input type="text" id="inpt" autocomplete="off">
                 <button onClick="aesEncrypt">Submit</button>
-                <div id="input"></div>
-                <div id="key"></div>
-                <div id="output"></div>
+                <div class="display" id="input"></div>
+                <div class="display" id="key"></div>
+                <div class="display" id="output"></div>
             </div>
             <article>
                 My implementation of the AES algorithm follows  
