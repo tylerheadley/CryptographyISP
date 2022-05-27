@@ -433,17 +433,17 @@ function aesEncrypt() {
         while (plaintext.length != 16) {
             plaintext += "\0"; 
         }
-        console.log(plaintext);
+        //console.log(plaintext);
 
         // convert to 4x4 grid of ascii values
         plaintext = textToBytes(plaintext);
 
         // generate random key
         const key = randomKey();
-        console.log(key);
+        //console.log(key);
         let keyString = "0x";
         for (let byte = 0; byte < 16; byte++) {
-            let byteString = key[i].toString(16);
+            let byteString = key[byte].toString(16);
             if (byteString.length != 2) {
                 byteString = "0" + byteString;
             }
