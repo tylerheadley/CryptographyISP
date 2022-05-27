@@ -421,7 +421,8 @@ function cipher(input, key) {
  * Takes in a string, converts it to ascii, and calls cipher to encrypt it
  * @param {String} text 
  */
-function aesEncrypt(text) {
+function aesEncrypt() {
+    const text = document.getElementById("inpt").value;
     document.getElementById("input").innerHTML = `Your input is ${text}`;
     const packets = [];
 
