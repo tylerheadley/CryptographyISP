@@ -440,7 +440,16 @@ function aesEncrypt() {
 
         // generate random key
         const key = randomKey();
-        document.getElementById("key").innerHTML = `Your output is ${key.toString()}`;
+        let keyString = "0x";
+        for (let byte = 0; byte < 16; byte++) {
+            let byteString = key[i].toString(16);
+            if (byteString.length != 2) {
+                byteString = "0" + byteString;
+            }
+            keyString += byteString;      
+        }
+
+        document.getElementById("key").innerHTML = `Random key is ${keyString}`;
 
         let ciphertext = cipher(plaintext, key);
 
