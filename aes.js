@@ -382,37 +382,37 @@ function cipher(input, key) {
     let state = input;
 
     const keySchedule = keyExpansion(key);
-    //logState(state, 0, "start");
+    logState(state, 0, "start");
 
     state = addRoundKey(state, keySchedule, 0); // initialization vector
-    //logState(state, 1, "start round");
+    logState(state, 1, "start round");
 
     for (let round = 1; round < 10; round++) {
-        //logState(state, round, "start round"); 
+        logState(state, round, "start round"); 
 
         state = subBytes(state);
-        //logState(state, round, "subbytes");
+        logState(state, round, "subbytes");
 
         state = shiftRows(state);
-        //logState(state, round, "shiftrows");
+        logState(state, round, "shiftrows");
 
         state = mixColumns(state);
-        //logState(state, round, "mixcolumns");
+        logState(state, round, "mixcolumns");
 
         state = addRoundKey(state, keySchedule, round);
     }
 
-    //logState(state, 10, "start round");
+    logState(state, 10, "start round");
 
     // last round does not include mixColumns
     state = subBytes(state);
-    //logState(state, 10, "subbytes");
+    logState(state, 10, "subbytes");
 
     state = shiftRows(state);
-    //logState(state, 10, "shiftrows");
+    logState(state, 10, "shiftrows");
 
     state = addRoundKey(state, keySchedule, 10);
-    //logState(state, 10, "addroundkey");
+    logState(state, 10, "addroundkey");
 
     return state;
 }
@@ -456,7 +456,8 @@ function aesEncrypt() {
 
         packets.push(ciphertext);
     }
-    document.getElementById("output").innerHTML = `Your output is ${logState(packets)}`;
+
+    document.getElementById("output").innerHTML = `Your output is ${packets.toString()}`;
     // console.log(packets);
     return packets;
 }
