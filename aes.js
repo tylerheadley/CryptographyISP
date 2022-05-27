@@ -422,7 +422,7 @@ function cipher(input, key) {
  * @param {String} text 
  */
 function aesEncrypt(text) {
-    document.getElementById("input").innerHTML = `Your input is ${text.toString()}`;
+    document.getElementById("input").innerHTML = `Your input is ${text}`;
     const packets = [];
 
     for (let i = 0; i < text.length; i += 16) {
