@@ -86,7 +86,7 @@ function textToBytes(text) {
  * @returns a string of hex
  */
 function logState(grid, round, action) {
-    let hex = "";
+    let hex = "0x";
     for(let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) { // traverse columns first
             if (grid[j][i].toString(16).length == 1) {
@@ -456,7 +456,7 @@ function aesEncrypt() {
 
         packets.push(ciphertext);
     }
-    document.getElementById("output").innerHTML = `Your output is ${packets.toString()}`;
+    document.getElementById("output").innerHTML = `Your output is ${logState(packets)}`;
     // console.log(packets);
     return packets;
 }
