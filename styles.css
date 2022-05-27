@@ -12,11 +12,9 @@ nav {
 
 main {
     width: 100%;
-}
-
-html {
-    margin: 0px;
-    padding: 0px;
+    position: relative;
+    top: 150px;
+    left: 50px;
 }
 
 nav > a {
@@ -45,8 +43,8 @@ body {
     width: 100%
 }
 
-h1, h6, article {
-    font-family: 'Courier New';
+h1, h5, h6 {
+    font-weight: bold;
     text-align: left;
     margin: 0px 150px;
     padding: 5px;
@@ -55,32 +53,21 @@ h1, h6, article {
 }
 
 h1 {
-    font-weight: bold;
+    font-size: 30px;
+}
+
+h5 {
     font-size: 24px;
 }
 
 h6 {
-    font-size: 17px;
+    font-size: 20px;
 }
 
 article {
     font-size: 14px;
     max-width: 600px;
 }
-
-/* p {
-    font-family: 'Courier New';
-    font-size: 14px;
-    position: relative;
-    top: 200px;
-} */
-
-/* .alg {
-    position: absolute;
-    top: 150px;
-    right: 100px;
-    font-family: 'Courier New', Courier, monospace;
-} */
 
 button {
     background-color: #0452aa;
@@ -103,14 +90,9 @@ input[type="text"] {
     resize: none;
 }
 
-div {
-    height: 40px;
-}
-
-main {
-    position: relative;
-    top: 150px;
-    left: 50px;
+img {
+    height: 200px;
+    width: 500px;
 }
 
 
