@@ -35,12 +35,14 @@
                 AES provides significantly better security than public key techniques for equivalent key sizes, and also performs significantly better than its predecessor.
             </article>
             <h5>My Implementation</h5>
-            <label for="input">Enter the text you would like to encrypt: </label>
-            <input type="text" id="input" autocomplete="off">
-            <button onClick="aesEncrypt">Submit</button>
-            <div id="input"></div>
-            <div id="output"></div>
-            <div id="output"></div>
+            <div id="aesCipher">
+                <label for="input">Enter the text you would like to encrypt: </label>
+                <input type="text" id="input" autocomplete="off">
+                <button onClick="aesEncrypt">Submit</button>
+                <div id="input"></div>
+                <div id="output"></div>
+                <div id="output"></div>
+            </div>
             <article>
                 My implementation of the AES algorithm follows  
                 <a href="https://csrc.nist.gov/csrc/media/publications/fips/197/final/documents/fips-197.pdf">NIST specifications</a>.

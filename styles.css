@@ -19,7 +19,7 @@ html {
     padding: 0px;
 }
 
-a {
+nav > a {
     font-family: "Trebuchet MS";
     text-transform: uppercase;
     font-size: 40px;
@@ -33,7 +33,7 @@ a {
     left: 15px;
 }
 
-a:hover {
+nav > a:hover {
     color: rgb(29, 27, 30);
     background: rgb(75, 255, 66);
     height: 100px;
@@ -75,12 +75,12 @@ p {
     top: 200px;
 }
 
-.alg {
+/* .alg {
     position: absolute;
     top: 150px;
     right: 100px;
     font-family: 'Courier New', Courier, monospace;
-}
+} */
 
 button {
     background-color: #0452aa;
