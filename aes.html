@@ -6,11 +6,11 @@
         <script type="text/javascript" src="aes.js"></script>
         <meta name="author" content="Tyler Headley">
         <meta name="description" content="Overview of Advanced Encryption Standard algorithm and provides example implementation.">
-        <script>
+        <!-- <script>
             function callAES() {
                 const ouput = aesEncrypt(document.getElementById("inpt"));
             }
-        </script>
+        </script> -->
     </head>
     <body>
         <header>
@@ -44,7 +44,7 @@
             <div id="aesCipher">
                 <label for="input">Enter the text you would like to encrypt: </label>
                 <input type="text" id="inpt" autocomplete="off">
-                <button onClick="callAES()">Submit</button>
+                <button onClick="aesEncrypt()">Submit</button>
                 <div class="display" id="input"></div>
                 <div class="display" id="key"></div>
                 <div class="display" id="output"></div>
