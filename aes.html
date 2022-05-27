@@ -40,7 +40,7 @@
                 <input type="text" id="input" autocomplete="off">
                 <button onClick="aesEncrypt">Submit</button>
                 <div id="input"></div>
-                <div id="output"></div>
+                <div id="key"></div>
                 <div id="output"></div>
             </div>
             <article>
@@ -61,6 +61,7 @@
                 differential cryptanalysis. 
             </article>
             <img src="images/SBox.png" alt="Sbox table" class="sbox">
+            <br>
             <span class="sbox">Figure 1: Sbox substitution values</span>
             <article>
                 Take, for example, the character "m", which has an ascii value of 109 in decimal. This corresponds to a hexadecimal value of {6d}. 
@@ -75,6 +76,7 @@
                 to the left by three columns. 
             </article>
             <img src="images/ShiftRows.png" alt="diagram of the ShiftRows transformation" class="shift">
+            <br>
             <span class="shift">Figure 2: ShiftRows permutation cipher</span>
             <h6>Step 3: MixColumns</h6>
             <article>

@@ -91,8 +91,12 @@ input[type="text"] {
 }
 
 img {
-    height: 200px;
-    width: 500px;
+    height: 225px;
+    width: 600px;
+}
+
+span {
+    font-weight: bold;
 }
 
 

@@ -422,6 +422,7 @@ function cipher(input, key) {
  * @param {String} text 
  */
 function aesEncrypt(text) {
+    document.getElementById("input").innerHTML = `Your input is ${text}`;
     const packets = [];
 
     for (let i = 0; i < text.length; i += 16) {
@@ -438,12 +439,13 @@ function aesEncrypt(text) {
 
         // generate random key
         const key = randomKey();
+        document.getElementById("key").innerHTML = `Your output is ${key}`;
 
         let ciphertext = cipher(plaintext, key);
 
         packets.push(ciphertext);
     }
-
+    document.getElementById("output").innerHTML = `Your output is ${packets}`;
     // console.log(packets);
 }
 
