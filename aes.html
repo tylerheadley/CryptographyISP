@@ -8,7 +8,8 @@
         <meta name="description" content="Overview of Advanced Encryption Standard algorithm and provides example implementation.">
         <script>
             function callAES() {
-                aesEncrypt(document.getElementById("inpt"));
+                const ouput = aesEncrypt(document.getElementById("inpt"));
+                document.getElementById("output").innerHTML = output;
             }
         </script>
     </head>
