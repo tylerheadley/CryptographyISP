@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ISP - AES</title>
+        <link rel=stylesheet href="styles.css">
+        <script type="text/javascript" href="aes.js"></script>
+        <meta name="author" content="Tyler Headley">
+        <meta name="description" content="Overview of Advanced Encryption Standard algorithm and provides example implementation.">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="./">ISP</a>
+                <a href="./caesarcipher">Caesar Cipher</a>
+                <a href="./rsa">RSA</a>
+                <a href="./ecdh">ECDH</a>
+                <a href="./aes">AES</a>
+            </nav>
+        </header>
+        <main>
+            <h3>Advanced Encryption Standard</h3>
+            <article>
+                Advanced Encryption Standard (AES) is a cipher that was adopted by the NIST (National Institute for Standards and Technology) in 2001.
+                AES is a symmetric-key cipher, meaning that both parties must possess the same key in order to communicate. 
+                Prior to its adoption by the NIST, AES was known as the Rijndael Cipher, and was developed by Joan Daemen and Vincent Rijmen.
+                During the late 1990's, the NIST decided to update the dated Data Encryption Standard (DES), which had been around since 1977.
+                Teams from around the world submitted their algorithms, and the Rijndael Cipher was selected for its (relative) simplicity, flexibility, and of course, security.
+            </article>
+            <h5>The Cipher</h5>
+            <article>
+                AES supports various key sizes, depending on the user's desired level of security (larger keys provide greater security). 
+                The cipher involves performing 10, 12, or 14 rounds of encryption, corresponding to a 128-bit, 192-bit, or 256-bit key size.
+                During each round, four transformations are performed on the data: SubBytes, ShiftRows, MixColumns, and AddRoundKey. 
+                These transformations scramble the data in a way that is indecipherable to anyone who does not possess the key. 
+                AES provides significantly better security than public key techniques for equivalent key sizes, and also performs significantly better than its predecessor.
+            </article>
+            <h5>My Implementation</h5>
+            <label for="input">Enter the text you would like to encrypt: </label>
+            <input type="text" id="input" autocomplete="off">
+            <button onClick="aesEncrypt">Submit</button>
+            <div id="input"></div>
+            <div id="output"></div>
+            <div id="output"></div>
+            <article>
+                My implementation of the AES algorithm follows  
+                <a href="https://csrc.nist.gov/csrc/media/publications/fips/197/final/documents/fips-197.pdf">NIST specifications</a>.
+                My implementation works by converting the input into an array of 16-byte "states" which are each encrypted separately.
+                Any input that is not a multiple of 16 bytes is padded with null characters (<a href="asciitable.com">ASCII</a> value = 0).
+                Each character in the input string is replaced by a corresponding byte according to the ASCII table. 
+                The state is represented as a 4x4 grid of bytes. AES makes use of both substitution and permutation ciphers, as well as other steps.
+            </article>
+            <h6>Step 1: SubBytes</h6>
+            <article>
+                The first transformation performed during each round is the SubBytes transformation. 
+                This transformation maps each value in the state to a new value according to a lookup table called an S-box. 
+                Since a byte is 8 bits, each element of the state be represented as XY, where X is a variable representing
+                the first 4 bits and Y represents the second 4 bits. The new value for the two byte sequence can be found by indexing the 
+                16x16 S-box at at row X and column Y. The S-box used for AES (shown below) was chosen to be resistent to linear and 
+                differential cryptanalysis. 
+            </article>
+            <img src="images/SBox.png" alt="Sbox table" class="sbox">
+            <span class="sbox">Figure 1: Sbox substitution values</span>
+            <article>
+                Take, for example, the character "m", which has an ascii value of 109 in decimal. This corresponds to a hexadecimal value of {6d}. 
+                In this example, we would go to the row of the S-box labeled "6" and the column labeled "d", and we would replace {6d} with {3c}.
+                Each of the bytes in the 4x4 grid will be replaced by a new byte according to this substitution method.
+            </article>
+            <h6>Step 2: ShiftRows</h6>
+            <article>
+                The second stage of AES is a simple permutation cipher. As the name of the transformation suggests,
+                this step shifts the rows of the 4x4 grid. The first row is not shifted at all, the second row is shifted
+                to the left by one column, the third row is shifted two columns to the left, and the fourth row is shifted
+                to the left by three columns. 
+            </article>
+            <img src="images/ShiftRows.png" alt="diagram of the ShiftRows transformation" class="shift">
+            <span class="shift">Figure 2: ShiftRows permutation cipher</span>
+            <h6>Step 3: MixColumns</h6>
+            <article>
+                This stage is where AES becomes much more complicated. During the MixColumns transformation, each column of 
+                the state is treated as a four term polynomial of the form b<sub>3</sub>x<sup>3</sup> + b<sub>2</sub>x<sup>2</sup> + 
+                b<sub>1</sub>x + b<sub>0</sub>.
+            </article>
+        </main>
+    </body>
+</html>
