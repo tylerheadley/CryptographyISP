@@ -447,6 +447,7 @@ function aesEncrypt(text) {
     }
     document.getElementById("output").innerHTML = `Your output is ${packets}`;
     // console.log(packets);
+    return packets;
 }
 
 function test() {
