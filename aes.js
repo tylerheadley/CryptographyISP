@@ -426,6 +426,20 @@ function aesEncrypt() {
     document.getElementById("input").innerHTML = `Your input is ${text}`;
     const packets = [];
 
+    // generate random key
+    const key = randomKey();
+    //console.log(key);
+    let keyString = "0x";
+    for (let byte = 0; byte < 16; byte++) {
+        let byteString = key[byte].toString(16);
+        if (byteString.length != 2) {
+            byteString = "0" + byteString;
+        }
+        keyString += byteString;      
+    }
+
+    document.getElementById("key").innerHTML = `Random key is ${keyString}`;
+
     for (let i = 0; i < text.length; i += 16) {
         let plaintext = text.substring(i, i+16);
         
@@ -438,26 +452,23 @@ function aesEncrypt() {
         // convert to 4x4 grid of ascii values
         plaintext = textToBytes(plaintext);
 
-        // generate random key
-        const key = randomKey();
-        //console.log(key);
-        let keyString = "0x";
-        for (let byte = 0; byte < 16; byte++) {
-            let byteString = key[byte].toString(16);
-            if (byteString.length != 2) {
-                byteString = "0" + byteString;
-            }
-            keyString += byteString;      
-        }
-
-        document.getElementById("key").innerHTML = `Random key is ${keyString}`;
-
         let ciphertext = cipher(plaintext, key);
 
         packets.push(ciphertext);
     }
-
-    document.getElementById("output").innerHTML = `Your output is ${packets.toString()}`;
+    let output = "0x";
+    for (let i = 0; i < packets.length; i++) {
+        for (let j = 0; j < packets[i].length; j++) {
+            for (let k = 0; k < packets[i][j].length; k++) {
+                let byteString = key[byte].toString(16);
+                if (byteString.length != 2) {
+                    byteString = "0" + byteString;
+                }
+                output += byteString;
+            }
+        }
+    }
+    document.getElementById("output").innerHTML = `Your output is ${output}`;
     // console.log(packets);
     return packets;
 }
