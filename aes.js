@@ -460,7 +460,7 @@ function aesEncrypt() {
     for (let i = 0; i < packets.length; i++) {
         for (let j = 0; j < packets[i].length; j++) {
             for (let k = 0; k < packets[i][j].length; k++) {
-                let byteString = key[byte].toString(16);
+                let byteString = packets[i][j][k].toString(16);
                 if (byteString.length != 2) {
                     byteString = "0" + byteString;
                 }
