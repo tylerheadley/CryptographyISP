@@ -92,9 +92,50 @@
             <h6>Step 3: MixColumns</h6>
             <article>
                 This stage is where AES becomes much more complicated. During the MixColumns transformation, each column of 
-                the state is treated as a four term polynomial of the form b<sub>3</sub>x<sup>3</sup> + b<sub>2</sub>x<sup>2</sup> + 
-                b<sub>1</sub>x + b<sub>0</sub>.
+                the state is treated as a four term polynomial of the form s(x) = b<sub>3</sub>x<sup>3</sup> + b<sub>2</sub>x<sup>2</sup> + 
+                b<sub>1</sub>x + b<sub>0</sub>, where b<sub>0-3</sub> are bytes. To perform this step, this polynomial is multiplied 
+                by the polynomial a(x) = 3x<sup>3</sup> + x<sup>2</sup> + x + 2 modulo x<sup>4</sup> + 1. Since x<sup>4</sup> + 1 is irreducible,
+                any such multiplication will result in an output that is also of the form b<sub>3</sub>x<sup>3</sup> + b<sub>2</sub>x<sup>2</sup> + 
+                b<sub>1</sub>x + b<sub>0</sub>, which can be converted back into a column of bytes. This polynomial has the property that for each term
+                in the resulting polynomial multiplication, x<sup>i</sup>mod(x<sup>4</sup> + 1) = x<sup>i mod 4</sup>. This multiplication can also be 
+                converted to a matrix representation as shown by the figure below: 
+            </article>
+            <img src="images/MatrixMult.png" alt="matrix multiplication" class="matrix">
+            <br>
+            <span class="matrix">Figures 3: MixColumns matrix multiplication. <em>c</em> is the column index of the state.</span>
+            <article>
+                Since each element of the state is a byte, this matrix multiplication requires repeated multiplication of bytes.
+                Byte multiplication for AES is also done using polynomials over finite fields. A byte can be represented by the polynomial
+                b<sub>7</sub>x<sup>7</sup> + b<sub>6</sub>x<sup>6</sup> + b<sub>5</sub>x<sup>5</sup> + b<sub>4</sub>x<sup>4</sup> + b<sub>3</sub>x<sup>3</sup> + b<sub>2</sub>x<sup>2</sup> + b<sub>1</sub>x + b<sub>0</sub>,
+                where b<sub>0-7</sub> are bits in the byte. For example, the polynomial x<sup>6</sup> + x<sup>5</sup> + x + 1 would be equivalent to the byte {99}, which in binary is 01100011.
+                This multiplication is performed over GF(2<sup>8</sup>) (<a href="https://en.wikipedia.org/wiki/Finite_field">Galois Field</a>) by 
+                taking the output modulo x<sup>8</sup> + x<sup>4</sup> + x<sup>3</sup> + x + 1. Since this polynomial is irreducible and degree 8, 
+                this operation is guaranteed to produce a polynomial of degree 7.  
+            </article>
+            <article>
+                In my implementation of this, I chose to represent polynomials as arrays which contained the powers of the terms present.
+                For example, the polynomial x<sup>7</sup> + x<sup>5</sup> + x would be [7, 5, 1]. Multiplication of two such arrays can then
+                be easily computed by adding each element of the first array to each element of the second (like FOILing). So, performing
+                (x<sup>7</sup> + x<sup>5</sup>)(x<sup>4</sup> + x<sup>2</sup> + 1), for example, would first converted to [7, 5]⋅[4, 2, 1], 
+                and by adding each element of array 1 with each element of array 2, we get [11, 9, 8, 9, 7, 6]. Notice that there are two instances
+                of the term x<sup>9</sup>. This polynomial should be simplified, but since the coefficient of each term is a bit and can only be a 
+                0 or 1, addition is performed as an xor, so the final array is [11, 8, 7, 6]. We still aren't finished, however; our final output 
+                must be a polynomial of degree 7 which can be converted back into byte representation, so the final step is to compute the remainder.
+                To do this, my algorithm uses a technique based off polynomial long division but for my array representation of polynomials. As a reminder,
+                the modulus for this computation is the polynomial x<sup>8</sup> + x<sup>4</sup> + x<sup>3</sup> + x + 1, which has an array representation 
+                of [8, 4, 3, 1, 0]. While the polynomial has a degree greater than 7, the difference of degree between the two polynomials is added to each term of the mod array.
+                So for [11, 8, 7, 6] mod [8, 4, 3, 1, 0], the new mod array will be [11, 7, 6, 4, 3]. Then, new mod array is subtracted from the polynomial array.
+                Subtraction is also computed as an xor, so any number that is in only one of the arrays is added to the new polynomial 
+                (Ex: [11, 8, 7, 6] - [11, 7, 6, 4, 3] => [8, 4, 3]). This process is repeated until the polynomial has a degree of less than 8. 
+            </article>
+            <br>
+            <h6>Step 4: AddRoundKey</h6>
+            <article>
+
             </article>
         </main>
+        <footer>
+            
+        </footer>
     </body>
 </html>
