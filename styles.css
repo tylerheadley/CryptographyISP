@@ -53,7 +53,7 @@ h1, h5, h6 {
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 40px;
 }
 
 h5 {
@@ -106,6 +106,9 @@ span {
 footer {
     height: 60px;
     background-color: rgb(29, 27, 30);
+    position: relative;
+    top: 150px;
+    right: 20px;
 }
 
 
