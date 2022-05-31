@@ -107,8 +107,8 @@ footer {
     height: 60px;
     background-color: rgb(29, 27, 30);
     position: relative;
-    /* top: 150px; */
-    right: 20px;
+    top: 150px;
+    /* right: 20px; */
 }
 
 
