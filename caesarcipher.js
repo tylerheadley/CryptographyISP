@@ -1,4 +1,19 @@
-function caesarCipherEncrypt(plaintext, key) {
+function caesarCipherEncrypt() {
+  const plaintext = document.getElementById("inputtext").value;
+  document.getElementById("displayInput").innerHTML = `Your input is ${plaintext}`;
+  let key = parseInt(document.getElementById("inputkey").value);
+  if (!key) { // if key was not inputted it will have a falsy value
+    key = Math.floor(Math.random() * 25 + 1); // generate random number 1-25
+    document.getElementById("displayKey").innerHTML = `Random key: ${key}`;
+  }
+  else if (key > 25 || key < 1) {
+    document.getElementById("displayKey").innerHTML = 'ERR: Enter a key value from 1-25, or leave the field blank for a random key';
+    return;
+  }
+  else {
+    key = Math.floor(key);
+    document.getElementById("displayKey").innerHTML = `Your input key is: ${key}`;
+  }
   let ciphertext = "";
   for (let i = 0; i < plaintext.length; i++) {
     const asciiVal = plaintext.charCodeAt(i);
@@ -11,5 +26,8 @@ function caesarCipherEncrypt(plaintext, key) {
     }
     ciphertext += String.fromCharCode(newAscii);
   }
+  document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext}`;
   return ciphertext;
 }
+
+caesarCipherEncrypt();

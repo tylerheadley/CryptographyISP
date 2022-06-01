@@ -7,26 +7,6 @@
       <link rel="stylesheet" href="styles.css">
       <!-- Load external JavaScript -->
       <script type="text/javascript" src="caesarcipher.js"></script>
-      <script>
-        function readForm() {
-          const plaintext = document.getElementById("text").elements[0].value;
-          document.getElementById("displayInput").innerHTML = `Your input is ${plaintext}`;
-          let key = parseInt(document.getElementById("text").elements[1].value);
-          if (!key) {
-            key = Math.floor(Math.random() * 25 + 1); // generate random number 1-25
-            document.getElementById("displayKey").innerHTML = `Random key: ${key}`;
-          }
-          else if (key > 25 || key < 1) {
-            document.getElementById("displayKey").innerHTML = 'ERR: Enter a key value from 1-25, or leave the field blank for a random key';
-          }
-          else {
-            document.getElementById("displayKey").innerHTML = `Your input key is: ${key}`;
-          }
-          const ciphertext = caesarCipherEncrypt(plaintext, key);
-          
-          document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext}`;
-        }
-        </script>
   </head>
   <body>
     <header>
@@ -39,21 +19,36 @@
       </nav>
     </header>
     <main>
-      <article>Caesar Ciphers were an early form of encryption used for communicating military strategy securly by Julius Caesar in 100 B.C. 
-        They shift the alphabet a certain number of letters to encode a message.</article>
+      <h1>Caesar Cipher</h1>
+      <article>Caesar Ciphers were an early form of cryptography used by Roman dictator Julius Caesar around 100 BC. He used this technique to 
+        communicate military strategy to his generals without risking giving secrets away to his enemies. The Caesar Cipher would render a message
+        indecipherable to the naked eye, so that even his messengers wouldn't be able to understand it if they tried to betray him.
+      </article>
+      <br>
+      <h5>How It Works</h5>
+      <article>
+        The Caesar Cipher is a type of very simple substitution cipher. A substitution cipher is a cipher where each character or chunk of data
+        is substituted with a new character or chunk of data. In the case of the Caesar Cipher, this substitution is determined by shifting the
+        alphabet a certain number of places. Caesar used a leftward shift of 3, so let's use that as an example.
+      </article>
+      <img id="wide" src="images/CaesarCipherEx.png">
+      <br>
+      <span>Figure 1: Example table for a Caesar Cipher substitution (key = 23).</span>
+      <article>
+        Take a look at the table above. A Caesar Cipher would work by substituting each character in a message with the corresponding character
+        in the second row. Imagine Caesar wanted to tell his generals to "begin the invasion", but he wanted to take his enemies by surpise.
+        To prevent this message from tipping off the enemy, he would use his cipher to encrypt it. The new message would read "ybdfk qeb fksxpflk".
+        Now, if the message was intercepted, an enemy would not easily be able to figure out its meaning. But to anyone possessing the key, which is 
+        the number of characters the message was shifted, the message code quickly be decoded and interpreted. Such a cipher could be broken in 
+        a mere fraction of a second by modern computers by brute force, creating a need for more secure encryption techniques. 
+      </article>
+      <div id="caesarCipher">
+        <label for="inputtext">Enter the text you would like to encrypt: </label>
+        <input type="text" maxlength="50" id="inputtext" autocomplete="off">
         <br>
-      <div class="alg">
-        <form id="text">
-          <label for="inpttext">Enter the text you would like to encrypt: </label>
-          <input type="text" maxlength="50" id="inpttext" name="inpttext" autocomplete="off">
-          <br>
-          <label for="inpttext"><em>(Optional)</em> Enter a key from 1-25: </label>
-          <input type="number" min="1" max=25 step="1" id="inptkey" name="inptkey" autocomplete="off">
-        </form>
-        <button onclick="readForm()">Submit</button>
-        <p id="displayInput"></p>
-        <p id="displayKey"></p>
-        <p id="displayOutput"></p>
+        <label for="inputkey"><em>(Optional)</em> Enter a key from 1-25: </label>
+        <input type="number" min="1" max=25 step="1" id="inputkey" name="inputkey" autocomplete="off">
+        <button onClick="caesarCipherEncrypt()">Submit</button>
       </div>
     </main>
   </body>
