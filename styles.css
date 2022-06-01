@@ -95,6 +95,11 @@ img {
     width: 600px;
 }
 
+#wide {
+    height: 75px;
+    width: 600px;
+}
+
 span {
     font-weight: bold; 
 }
