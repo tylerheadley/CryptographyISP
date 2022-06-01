@@ -1,10 +1,10 @@
 function caesarCipherEncrypt() {
-  const plaintext = document.getElementById("inputtext").value;
-  document.getElementById("displayInput").innerHTML = `Your input is ${plaintext}`;
+  const plaintext = document.getElementById("inputtext");
+  document.getElementById("displayInput").innerHTML = `Your input is <strong>${plaintext}</strong>`;
   let key = parseInt(document.getElementById("inputkey").value);
   if (!key) { // if key was not inputted it will have a falsy value
     key = Math.floor(Math.random() * 25 + 1); // generate random number 1-25
-    document.getElementById("displayKey").innerHTML = `Random key: ${key}`;
+    document.getElementById("displayKey").innerHTML = `Random key: <strong>${key}</strong>`;
   }
   else if (key > 25 || key < 1) {
     document.getElementById("displayKey").innerHTML = 'ERR: Enter a key value from 1-25, or leave the field blank for a random key';
@@ -12,7 +12,7 @@ function caesarCipherEncrypt() {
   }
   else {
     key = Math.floor(key);
-    document.getElementById("displayKey").innerHTML = `Your input key is: ${key}`;
+    document.getElementById("displayKey").innerHTML = `Your input key is: <strong>${key}<strong>`;
   }
   let ciphertext = "";
   for (let i = 0; i < plaintext.length; i++) {
@@ -26,8 +26,6 @@ function caesarCipherEncrypt() {
     }
     ciphertext += String.fromCharCode(newAscii);
   }
-  document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext}`;
+  document.getElementById("displayOutput").innerHTML = `Your output is <strong>${ciphertext}</strong>`;
   return ciphertext;
 }
-
-caesarCipherEncrypt();
