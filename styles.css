@@ -47,7 +47,7 @@ nav > a:hover {
 body {
     background-color: rgb(255, 255, 255);
     font-family: "Source Sans Pro", 'Courier New', Courier, monospace;
-    width: 100%
+    width: 100%;
 }
 
 h1, h5, h6 {
@@ -57,6 +57,7 @@ h1, h5, h6 {
 }
 
 h1 {
+    width: 100%;
     font-size: 40px;
 }
 
@@ -109,14 +110,18 @@ span {
     height: 30px;
 }
 
-footer {
+#footer {
     height: 60px;
     background-color: rgb(29, 27, 30);
     position: relative;
     top: 150px;
     right: 8px;
-    width: 100%;
+    width: max-content%;
     margin: 0px;
+}
+
+figcaption {
+    font-size: 12px;
 }
 
 
