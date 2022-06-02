@@ -20,20 +20,22 @@
     </header>
     <main>
       <h1>Caesar Cipher</h1>
+      <br>
       <article>Caesar Ciphers were an early form of cryptography used by Roman dictator Julius Caesar around 100 BC. He used this technique to 
         communicate military strategy to his generals without risking giving secrets away to his enemies. The Caesar Cipher would render a message
         indecipherable to the naked eye, so that even his messengers wouldn't be able to understand it if they tried to betray him.
       </article>
       <br>
       <h5>How It Works</h5>
+      <br>
       <article>
         The Caesar Cipher is a type of very simple substitution cipher. A substitution cipher is a cipher where each character or chunk of data
         is substituted with a new character or chunk of data. In the case of the Caesar Cipher, this substitution is determined by shifting the
         alphabet a certain number of places. Caesar used a leftward shift of 3, so let's use that as an example.
       </article>
       <img id="wide" src="images/CaesarCipherEx.png">
-      <br>
       <span>Figure 1: Example table for a Caesar Cipher substitution (key = 23).</span>
+      <br>
       <article>
         Take a look at the table above. A Caesar Cipher would work by substituting each character in a message with the corresponding character
         in the second row. Imagine Caesar wanted to tell his generals to "begin the invasion", but he wanted to take his enemies by surpise.
@@ -43,7 +45,9 @@
         a mere fraction of a second by modern computers by brute force, creating a need for more secure encryption techniques. 
       </article>
       <br>
+      <br>
       <h5>My Implementation</h5>
+      <br>
       <div id="caesarCipher">
         <label for="inputtext">Enter the text you would like to encrypt: </label>
         <input type="text" maxlength="50" id="inputtext" autocomplete="off">
@@ -59,13 +63,15 @@
         My Caesar Cipher algorithm works by iterating through each character in the input string to apply the substitution. If the character is 
         a letter (uppercase or lowercase), the shift is applied.
       </article>
+      <br>
       <img src="images/caesCiphCode.png">
       <br>
-      <span>Figure 2: my algorithm</span>
+      <span>Figure 2: My algorithm</span>
+      <br>
       <br>
       <img src="images/ascii.png">
       <br>
-      <span>Figure 3: ascii table used for converting characters to numbers</span>
+      <span>Figure 3: ASCII table used for converting characters to numbers</span>
       <br>
       <footer></footer>
     </main>
