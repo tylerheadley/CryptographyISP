@@ -18,6 +18,7 @@ main {
 }
 
 main:first-child, main:nth-child(2) {
+    width: 600px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -53,8 +54,6 @@ h1, h5, h6 {
     font-weight: bold;
     margin: 0px 150px;
     padding: 5px;
-    /* position: relative;
-    top: 150px; */
 }
 
 h1 {
@@ -116,7 +115,7 @@ footer {
     position: relative;
     top: 150px;
     right: 8px;
-    width: 100;
+    width: 100%;
     margin: 0px;
 }
 
