@@ -41,7 +41,7 @@
                 AES provides significantly better security than public key techniques for equivalent key sizes, and also performs significantly better than its predecessor.
             </article>
             <br>
-            <h5>My Implementation</h5>
+            <h5>Implementation</h5>
             <br>
             <div id="aesCipher">
                 <label for="input">Enter the text you would like to encrypt: </label>
@@ -69,9 +69,11 @@
                 16x16 S-box at at row X and column Y. The S-box used for AES (shown below) was chosen to be resistent to linear and 
                 differential cryptanalysis. 
             </article>
-            <img src="images/SBox.png" alt="Sbox table" class="sbox">
+            <figure>
+                <img src="images/SBox.png" alt="Sbox table">
+                <figcaption>Figure 1: Sbox substitution values</figcaption>
+            </figure>
             <br>
-            <span class="sbox">Figure 1: Sbox substitution values</span>
             <article>
                 Take, for example, the character "m", which has an ascii value of 109 in decimal. This corresponds to a hexadecimal value of {6d}. 
                 In this example, we would go to the row of the S-box labeled "6" and the column labeled "d", and we would replace {6d} with {3c}.
@@ -85,9 +87,10 @@
                 to the left by one column, the third row is shifted two columns to the left, and the fourth row is shifted
                 to the left by three columns. 
             </article>
-            <img src="images/ShiftRows.png" alt="diagram of the ShiftRows transformation" class="shift">
-            <br>
-            <span class="shift">Figure 2: ShiftRows permutation cipher</span>
+            <figure>
+                <img src="images/ShiftRows.png" alt="diagram of the ShiftRows transformation">
+                <figcaption>Figure 2: ShiftRows permutation cipher</figcaption>
+            </figure>
             <br>
             <h6>Step 3: MixColumns</h6>
             <article>
@@ -100,9 +103,10 @@
                 in the resulting polynomial multiplication, x<sup>i</sup>mod(x<sup>4</sup> + 1) = x<sup>i mod 4</sup>. This multiplication can also be 
                 converted to a matrix representation as shown by the figure below: 
             </article>
-            <img src="images/MatrixMult.png" alt="matrix multiplication" class="matrix">
-            <br>
-            <span class="matrix">Figures 3: MixColumns matrix multiplication. <em>c</em> is the column index of the state.</span>
+            <figure>
+                <img src="images/MatrixMult.png" alt="matrix multiplication">
+                <figcaption>Figures 3: MixColumns matrix multiplication. <em>c</em> is the column index of the state.</figcaption>
+            </figure>
             <article>
                 Since each element of the state is a byte, this matrix multiplication requires repeated multiplication of bytes.
                 Byte multiplication for AES is also done using polynomials over finite fields. A byte can be represented by the polynomial
@@ -112,6 +116,7 @@
                 taking the output modulo x<sup>8</sup> + x<sup>4</sup> + x<sup>3</sup> + x + 1. Since this polynomial is irreducible and degree 8, 
                 this operation is guaranteed to produce a polynomial of degree 7.  
             </article>
+            <br>
             <article>
                 In my implementation of this, I chose to represent polynomials as arrays which contained the powers of the terms present.
                 For example, the polynomial x<sup>7</sup> + x<sup>5</sup> + x would be [7, 5, 1]. Multiplication of two such arrays can then
@@ -131,11 +136,22 @@
             <br>
             <h6>Step 4: AddRoundKey</h6>
             <article>
-
+                The final step of the cipher is to XOR the round key with each column of the state. 
             </article>
+            <h6>Putting it all together</h6>
+            <article>
+                For AES-128, there are 10 rounds of encryption performed on the data. After performing key expansion to get the key schedule,
+                the state is XORed with the original key. Then, each of the aforementioned steps are performed 10 times, with the exception of 
+                MixColumns, which is not applied during the last round. 
+            </article>
+            <figure>
+                <img src="images/aes.png">
+                <figcaption>Figure 4: AES-128 cipher algorithm in JavaScript</figcaption>
+            </figure>
+            <br>
         </main>
         <footer>
-            
+
         </footer>
     </body>
 </html>
