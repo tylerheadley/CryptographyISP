@@ -18,7 +18,10 @@ main {
 }
 
 main:first-child, main:nth-child(2) {
-    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 nav > a {
@@ -49,7 +52,6 @@ body {
 
 h1, h5, h6 {
     font-weight: bold;
-    text-align: left;
     margin: 0px 150px;
     padding: 5px;
     /* position: relative;
@@ -95,17 +97,14 @@ input[type="text"] {
 }
 
 img {
-    height: 225px;
     width: 600px;
-}
-
-#wide {
-    height: 75px;
-    width: 600px;
+    height: auto;
+    border-radius: 5px;
 }
 
 span {
     font-weight: bold; 
+    font-size: 12px;
 }
 
 .display {
