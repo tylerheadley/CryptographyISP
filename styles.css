@@ -18,7 +18,7 @@ main {
 }
 
 main:first-child, main:nth-child(2) {
-    width: 600px;
+    width: 800px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -35,7 +35,7 @@ nav > a {
     text-decoration: none;
     position: relative;
     top: 27px;
-    left: 15px;
+    left: 25px;
 }
 
 nav > a:hover {
@@ -71,7 +71,7 @@ h6 {
 
 article {
     font-size: 14px;
-    max-width: 600px;
+    max-width: 800px;
 }
 
 button {
@@ -96,7 +96,7 @@ input[type="text"] {
 }
 
 img {
-    width: 600px;
+    width: 700px;
     height: auto;
     border-radius: 5px;
 }
@@ -116,7 +116,7 @@ span {
     position: relative;
     top: 150px;
     right: 8px;
-    width: max-content%;
+    width: max-content;
     margin: 0px;
 }
 
