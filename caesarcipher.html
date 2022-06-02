@@ -42,6 +42,8 @@
         the number of characters the message was shifted, the message code quickly be decoded and interpreted. Such a cipher could be broken in 
         a mere fraction of a second by modern computers by brute force, creating a need for more secure encryption techniques. 
       </article>
+      <br>
+      <h5>My Implementation</h5>
       <div id="caesarCipher">
         <label for="inputtext">Enter the text you would like to encrypt: </label>
         <input type="text" maxlength="50" id="inputtext" autocomplete="off">
@@ -53,6 +55,19 @@
         <div class="display" id="displayKey"></div>
         <div class="display" id="displayOutput"></div>
       </div>
+      <article>
+        My Caesar Cipher algorithm works by iterating through each character in the input string to apply the substitution. If the character is 
+        a letter (uppercase or lowercase), the shift is applied.
+      </article>
+      <img src="images/caesCiphCode.png">
+      <br>
+      <span>Figure 2: my algorithm</span>
+      <br>
+      <img src="images/ascii.png">
+      <br>
+      <span>Figure 3: ascii table used for converting characters to numbers</span>
+      <br>
+      <footer></footer>
     </main>
   </body>
 </html>
