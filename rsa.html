@@ -20,14 +20,14 @@
     </header>
     <main>
 		<h1>RSA</h1>
-      	<article></article>
+      	<article>RSA is a public key cryptosystem created by Ron Rivest, Adi Shamir, and Leonard Adleman in 1977. </article>
         <br>
 		<label for="inputtext">Enter the text you would like to encrypt: </label>
 		<input type="text" maxlength="50" id="inputtext" name="inputtext" autocomplete="off">
-        <button type="submit" onclick="readForm()">Submit</button>
-        <div id="displayInput"></p>
-        <div id="displayKey"></p>
-        <div id="displayOutput"></p>
+        <button type="submit" onclick="rsaEncrypt()">Submit</button>
+        <div class="display" id="displayInput"></p>
+        <div class="display" id="displayKey"></p>
+        <div class="display" id="displayOutput"></p>
     </main>
   </body>
 </html>
