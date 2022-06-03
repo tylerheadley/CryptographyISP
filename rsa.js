@@ -106,7 +106,13 @@ function modExp(base, exp, mod) {
 }
 
 
-function rsaEncrypt(text, p, q) {
+function rsaEncrypt() {
+  const plaintext = document.getElementById("inputtext").value;
+  document.getElementById("displayInput").innerHTML = `Your input is ${plaintext}`;
+
+  const p = generateRandomPrime(100, 1000);
+  const q = generateRandomPrime(100, 1000);
+  document.getElementById("displayKey").innerHTML = `p = <strong>${p}</strong>, q = <strong>${q}</strong>.`;
 
   const n = p * q;
 
@@ -125,22 +131,15 @@ function rsaEncrypt(text, p, q) {
     m.push(Number(num));
   }
 
-  const ct = [];
+  const ciphertext = [];
   for (let i = 0; i < m.length; i++) {
-    ct.push(modExp(m[i], e, n))
+    ciphertext.push(modExp(m[i], e, n))
   }
 
-  //const d = modInverse(e,phi);
-  //const pt = modExp(c, d, n); 
-  // console.log(e);
-  // console.log(phi);
-  // //console.log(d);
-  // //console.log((e*d)%phi);
-  // console.log(m);
-  // console.log(ct);
-  return ct;
+  document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext.toString()}`;
+
+  return ciphertext;
 }
 
-//rsaEncrypt("Hello World!", 5, 10); 
 
 

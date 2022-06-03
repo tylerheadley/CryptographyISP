@@ -7,40 +7,27 @@
       <link rel="stylesheet" href="styles.css">
       <!-- Load external JavaScript -->
       <script type="text/javascript" src="rsa.js"></script>
-      <script>
-        function readForm() {
-          const text = document.getElementById("inpttext").value;
-          document.getElementById("displayInput").innerHTML = `Your input is ${text}`;
-		  const p = generateRandomPrime(100, 1000);
-		  const q = generateRandomPrime(100, 1000);
-          document.getElementById("displayKey").innerHTML = `p = ${p}, q = ${q}.`;
-          const ciphertext = rsaEncrypt(text, p, q);
-          
-          document.getElementById("displayOutput").innerHTML = `Your output is ${ciphertext.toString()}`;
-        }
-        </script>
   </head>
   <body>
     <header>
       <nav>
-        <a class="isp" href="./index">ISP</a>
+        <a href="./index">ISP</a>
         <a href="./caesarcipher">Caesar Ciphers</a>
         <a href="./rsa">RSA</a>
-        <a href="./ecc">ECC</a>
+        <a href="./ecdh">ECDH</a>
         <a href="./aes">AES</a>
       </nav>
     </header>
     <main>
-      <article>RSA 1.0</article>
+		<h1>RSA</h1>
+      	<article></article>
         <br>
-      <div class="alg">
-		<label for="inpttext">Enter the text you would like to encrypt: </label>
-		<input type="text" maxlength="50" id="inpttext" name="inpttext" autocomplete="off">
+		<label for="inputtext">Enter the text you would like to encrypt: </label>
+		<input type="text" maxlength="50" id="inputtext" name="inputtext" autocomplete="off">
         <button type="submit" onclick="readForm()">Submit</button>
-        <p id="displayInput"></p>
-        <p id="displayKey"></p>
-        <p id="displayOutput"></p>
-      </div>
+        <div id="displayInput"></p>
+        <div id="displayKey"></p>
+        <div id="displayOutput"></p>
     </main>
   </body>
 </html>
