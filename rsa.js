@@ -122,7 +122,7 @@ function rsaEncrypt() {
   const e = 65537;
 
   let m = [];
-  for (let i = 0; i < text.length; i++) {
+  for (let i = 0; i < plaintext.length; i++) {
     let num = "";
     while (num.length < 46 && i < plaintext.length) {
       num += plaintext.charCodeAt(i).toString(2);
