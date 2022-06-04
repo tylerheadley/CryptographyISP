@@ -20,7 +20,52 @@
     </header>
     <main>
 		<h1>RSA</h1>
-      	<article>RSA is a public key cryptosystem created by Ron Rivest, Adi Shamir, and Leonard Adleman in 1977. </article>
+      	<article>
+			RSA is a public key cryptosystem created by Ron Rivest, Adi Shamir, and Leonard Adleman in 1977. RSA was revolutionary at its time,
+			and despite newer, more efficient algorithms, it is still widely used today for key transmission. Public key cryptography allows two parties
+			with no prior contact to communicate securely over an unsecure channel.
+		</article>
+		<h5>How It Works</h5>
+		<article>
+			RSA is based on the premise that it is computationally difficult to factor large number, but comparitively easy to multiply large numbers.
+			To begin, the receiving party will first generate two large prime numbers, which are called p and q. Then, they will compute n = pq, which 
+			will serve as the public key. They will also compute ϕ(n), where ϕ is Euler's totient function. ϕ(n) is equal to the number of positive integers
+			less than and coprime to n. Since n is the product of p and q, ϕ(n) can be found efficiently using the formula ϕ(n) = (p-1)(q-1). p, q, and ϕ(n)
+			should all be kept secret. The receiver will also choose an exponent <em>e</em> which will serve as the other component of the public key.
+			Typically, e is chosen to be 65537 (2<sup>16</sup> - 1), but it can be any integer that is less than and coprime to ϕ(n). For my implementation I use 3 for simplicity. 
+		</article>
+		<article>
+			Once both components of the public key have been published, a sender can now encrypt and send a message to the receiver using that receiver's public key.
+			To do this, the receiver will compute c = m<sup>e</sup> mod n, where m is the message and c is the ciphertext. This can be computed efficiently using a modular 
+			exponentiation algorithm such as the one below. 
+		</article>
+		<figure>
+			<img src="images/modexp.png" alt="Modular exponentiation algorithm screenshot">
+			<figcaption>
+				Figure 1: My JavaScript implementation of a simple modular exponentiation algorithm. 
+				This algorithm is much more space efficient than computing m<sup>e</sup> and then finding the remainder. 
+			</figcaption>
+		</figure>
+		<article>
+			Once c has been computed, it can be transmitted to the receiver. To decrypt c, the receiver must compute d, the modular multiplicative inverse of e modulo ϕ(n).
+			This can be done efficiently using the <a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">extended euclidean algorithm</a>. To decrypt the ciphertext,
+			the receiver can compute m = c<sup>d</sup> mod n.
+		</article>
+		<h5>Why It Works</h5>
+		<article>
+			The security and effectiveness of RSA depends on a few different mathematical and computational properties. As I mentioned previously, it is much more difficult to factor a number
+			into its two prime components than to multiply two prime numbers together. Something that is easy to do but difficult to undo in cryptography is known as a trapdoor function, where "easy" and "difficult" are determined based on the time complexity. 
+			When p and q are extremely large (often 2^1024, which is a 309 digit number), it becomes infeasible to factor n back into its prime components, as doing so would take all of the computers in the world more time and energy than exists in the universe. 
+			This is critical to RSA because without this property, an attacker could easily find ϕ(n) and therefore use the extended euclidean algorithm to compute d and decrypt the message. 
+			Another important concept to understand RSA is that of the discrete logarithm problem. 
+			The discrete logarithm problem states that given a number (in this case, the ciphertext c), an exponent (e), and a modulus (n), it is difficult to find the original base (m). 
+			
+		</article>
+		<img
+		<br>
+		<article>
+
+		</article>
         <br>
 		<label for="inputtext">Enter the text you would like to encrypt: </label>
 		<input type="text" maxlength="50" id="inputtext" name="inputtext" autocomplete="off">
