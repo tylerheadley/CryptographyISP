@@ -35,10 +35,10 @@
                 The cipher involves performing 10, 12, or 14 rounds of encryption, corresponding to a 128-bit, 192-bit, or 256-bit key size.
                 During each round, four transformations are performed on the data: SubBytes, ShiftRows, MixColumns, and AddRoundKey. 
                 These transformations scramble the data in a way that is indecipherable to anyone who does not possess the key. 
-                AES provides significantly better security than public key techniques for equivalent key sizes, and also performs significantly better than its predecessor.
+                AES provides significantly better security than public key techniques for equivalent key sizes, and also performs better than its predecessor.
             </article>
             <br>
-            <h5>Implementation</h5>
+            <h5>My Implementation</h5>
             <br>
             <div id="aesCipher">
                 <label for="input">Enter the text you would like to encrypt: </label>
@@ -121,19 +121,20 @@
                 (x<sup>7</sup> + x<sup>5</sup>)(x<sup>4</sup> + x<sup>2</sup> + 1), for example, would first converted to [7, 5]⋅[4, 2, 1], 
                 and by adding each element of array 1 with each element of array 2, we get [11, 9, 8, 9, 7, 6]. Notice that there are two instances
                 of the term x<sup>9</sup>. This polynomial should be simplified, but since the coefficient of each term is a bit and can only be a 
-                0 or 1, addition is performed as an xor, so the final array is [11, 8, 7, 6]. We still aren't finished, however; our final output 
+                0 or 1, addition is performed as an <a href="https://en.wikipedia.org/wiki/Exclusive_or">XOR</a>, so the final array is [11, 8, 7, 6]. We still aren't finished, however; our final output 
                 must be a polynomial of degree 7 which can be converted back into byte representation, so the final step is to compute the remainder.
                 To do this, my algorithm uses a technique based off polynomial long division but for my array representation of polynomials. As a reminder,
                 the modulus for this computation is the polynomial x<sup>8</sup> + x<sup>4</sup> + x<sup>3</sup> + x + 1, which has an array representation 
                 of [8, 4, 3, 1, 0]. While the polynomial has a degree greater than 7, the difference of degree between the two polynomials is added to each term of the mod array.
                 So for [11, 8, 7, 6] mod [8, 4, 3, 1, 0], the new mod array will be [11, 7, 6, 4, 3]. Then, new mod array is subtracted from the polynomial array.
-                Subtraction is also computed as an xor, so any number that is in only one of the arrays is added to the new polynomial 
+                Subtraction is also computed as an XOR, so any number that is in only one of the arrays is added to the new polynomial 
                 (Ex: [11, 8, 7, 6] - [11, 7, 6, 4, 3] => [8, 4, 3]). This process is repeated until the polynomial has a degree of less than 8. 
             </article>
             <br>
             <h6>Step 4: AddRoundKey</h6>
             <article>
-                The final step of the cipher is to XOR the round key with each column of the state. 
+                The final step of the cipher is to XOR the round key with each column of the state. The round key is found by performing a key expansion operation on the original AES key.
+                The details of key expansion are complicated and not worth getting into; if you are interested as to how it works, you can view my program <a href="https://github.com/tylerheadley/tylerheadley.github.io/blob/main/aes.js">here</a>.
             </article>
             <h6>Putting it all together</h6>
             <article>
@@ -145,10 +146,13 @@
                 <img src="images/aes.png">
                 <figcaption>Figure 4: AES-128 cipher algorithm in JavaScript</figcaption>
             </figure>
+            <article>
+                Although my implementation follows NIST specifications, it has not undergone thorough cryptanalysis and still may be subject to various attacks.
+                With that being said, my program was successfully able to reproduce the NIST test case provided in the document, indicating that it is in fact working properly;
+                theoretically, someone possessing the AES decryption function and key would be able to recover the original text encrypted by my algorithm.
+            </article>
             <br>
         </main>
-        <footer>
-
-        </footer>
+        <footer></footer>
     </body>
 </html>

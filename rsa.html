@@ -12,7 +12,7 @@
   <body>
     <header>
       <nav>
-        <a href="./index">ISP</a>
+        <a href="./">ISP</a>
         <a href="./caesarcipher">Caesar Ciphers</a>
         <a href="./rsa">RSA</a>
         <a href="./ecdh">ECDH</a>
@@ -37,6 +37,7 @@
 			should all be kept secret. The receiver will also choose an exponent <em>e</em> which will serve as the other component of the public key.
 			Typically, e is chosen to be 65537 (2<sup>16</sup> - 1), but it can be any integer that is less than and coprime to ϕ(n). For my implementation I use 3 for simplicity. 
 		</article>
+		<br>
 		<article>
 			Once both components of the public key have been published, a sender can now encrypt and send a message to the receiver using that receiver's public key.
 			To do this, the receiver will compute c = m<sup>e</sup> mod n, where m is the message and c is the ciphertext. This can be computed efficiently using a modular 
@@ -76,6 +77,8 @@
         <div class="display" id="displayInput"></div>
         <div class="display" id="displayKey"></div>
         <div class="display" id="displayOutput"></div>
+
     </main>
+	<footer></footer>
   </body>
 </html>

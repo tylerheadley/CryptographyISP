@@ -9,13 +9,13 @@
         <!-- Load external CSS styles -->
         <link rel="stylesheet" href="styles.css">
         <!-- Load external JavaScript -->
-        <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+        <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
       </head>
 
     <body>
       <header>
         <nav>
-          <a class="isp" href="./index">ISP</a>
+          <a class="isp" href="./">ISP</a>
           <a href="./caesarcipher">Caesar Ciphers</a>
           <a href="./rsa">RSA</a>
           <a href="./ecdh">ECDH</a>
@@ -23,9 +23,9 @@
         </nav>
       </header>
       <main>
-        <h1>Building a Web App for Text Encryption</h1>
-        <h6>Tyler Headley</h6>
-        <h6>2022 Independent Senior Project</h6>
+        <h1>Creating a Cryptography Web Application</h1>
+        <h5>Tyler Headley</h5>
+        <h5>2022 Independent Senior Project</h5>
         <article>
           The goal of this ISP is to combine two different areas that interest me: 
           cybersecurity and web development. To achieve this goal, I have decided to build a website 
@@ -55,11 +55,16 @@
           but also grant the host more advanced features. 
         </article>
         <article>
-          This project implements four encryption algorithms. The first, a Caesar Cipher, is by far the simplest of them all. RSA, invented in the 1970's,
-          was a revolutionary innovation for its time and is still widely used today for key exchange between parties. Advancements in computing power and algorithms
-          have made RSA less secure for small key sizes, leading to the development of Elliptic Curve Cryptography, which provides greater security than 
-          RSA at equivalent key size. Finally, Advanced Encryption Standard is a symmetric cryptosystem that is also widely used for secure communication. 
+          This project implements four encryption algorithms. The first, a Caesar Cipher, is a historical cipher and by far the simplest of them all. 
+          RSA, invented in the 1970's, was a revolutionary innovation for its time and is still widely used today for key exchange between parties. 
+          Advancements in computing power and algorithms have made RSA less secure for small key sizes, leading to the development of Elliptic Curve Cryptography, which provides greater security than 
+          RSA at equivalent key size. ECC is a branch of public-key cryptography; I chose to implement the Elliptic Curve Diffie Hellman algorithm.
+          Finally, Advanced Encryption Standard is a symmetric cryptosystem that is widely used sending messages securely. 
+        </article>
+        <article>
+          To view the source code for this project you can visit my <a href="https://github.com/tylerheadley/tylerheadley.github.io">GitHub repository</a>.
         </article>
       </main>
+      <footer></footer>
     </body>
 </html>
