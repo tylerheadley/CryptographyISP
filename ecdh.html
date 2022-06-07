@@ -103,15 +103,15 @@
                 Since the finding the tangent line requires the instantaneous rate of change of the curve, calculus is required to derive the slope equation.
                 We can perform implicit differentiation on the elliptic curve equation y<sup>2</sup> = x<sup>3</sup> + ax + b.
                 The derivative of y<sup>2</sup> with respect to x is 2y(dy/dx), and the derivative of x<sup>3</sup> + ax + b is 3x<sup>2</sup> + a.
-                Solving for dy/dx we get (3x<sup>2</sup> + a)/2y, and by substituting x<sub>P</sub> for x and y<sub>P</sub> for y, we get s = (3x<sub>P</sub><sup>2</sup> + a)/2y<sub>P</sub>.
-                From here, we can use the equations x<sub>2P</sub> = s<sup>2</sup> - 2x<sub>P</sub> and y<sub>2P</sub> = s(x<sub>P</sub> - x<sub>2P</sub>) - y<sub>P</sub>
+                Solving for dy/dx we get (3x<sup>2</sup> + a)/2y, and by substituting s for dy/dx, x<sub>P</sub> for x, and y<sub>P</sub> for y, we get s = (3x<sub>P</sub><sup>2</sup> + a)/2y<sub>P</sub>.
+                From here, we can use the equations x<sub>2P</sub> = s<sup>2</sup> - 2x<sub>P</sub> and y<sub>2P</sub> = s(x<sub>P</sub> - x<sub>2P</sub>) - y<sub>P</sub>.
             </article>
             <br>
             <h6>Point at Infinity</h6>
             <article>
                 But what happens if P ≠ Q, but x<sub>P</sub> = x<sub>Q</sub>? 
                 In this case, the line drawn between the two points is vertical, and does not intersect the curve at a third point. 
-                This will pose a problem for our group operations, so to bypass this issue we say that P+Q is the "point at infinity", which is denoted as a which looks similar to a capital "O".
+                This will pose a problem for our group operations, so to bypass this issue we say that P+Q is the "point at infinity", which is denoted as a character that looks similar to a capital "O".
                 In the earlier section on elliptic curves, I said that E(F<sub>p</sub>) = {(x,y) : y<sup>2</sup> ≡ x<sup>3</sup> + ax + b (mod p)}.
                 This set is actually not including the point at infinity, so it should be written as E(F<sub>p</sub>) = {(x,y) : y<sup>2</sup> ≡ x<sup>3</sup> + ax + b (mod p)} ∪ {O}.
             </article>
@@ -127,7 +127,7 @@
                 The final elliptic curve operation, scalar multiplication, builds on the previously discussed operations.
                 Scalar multiplication is essentially just point addition, repeated k times.
                 To compute kP, where P ∈ E(F<sub>p</sub>), we will begin by finding 2P using point doubling. 
-                From there we will compute 3P to be point addition between P and 2P.
+                From there we will compute 3P as point addition between P and 2P.
                 Then, 4P = P+3P, 5P = P+4P, and so on until k is reached.
             </article>
             <br>
@@ -135,12 +135,12 @@
             <br>
             <article>
                 Elliptic Curve Diffie-Hellman relies on analogous concepts and techniques as Diffie-Hellman, but uses elliptic curve operations as a stronger cryptographic trapdoor function.
-                Suppose Alice and Bob wish to instead use ECDH to find a shared secret.
+                Suppose Alice and Bob wish to use ECDH to find a shared secret.
                 Once again, they will first decide upon a prime modulus, p. 
                 They will also decide on a generator point G ∈ E(F<sub>p</sub>), which is analogous to the base parameter in Diffie-Hellman.
                 Since we are dealing with elliptic curves, they must also decide upon the curve parameters, a and b. 
-                From these parameters, they can also calculate the order of the curve, n.
-                These domain parameters form the public key will be visible to any attackers.
+                From all of these parameters, they can calculate the order of the curve, n.
+                These domain parameters are part of the public key will be visible to any attackers.
             </article>
             <br>
             <article>
@@ -159,11 +159,10 @@
             <article>
                 Alice and Bob both arrive at the same point because scalar multiplication is associative, meaning order doesn't matter.
                 From an attackers perspective, it is computationally difficult to find abG given only aG, bG, and the domain parameters; so difficult that for large parameters, it is infeasible to do so.
-                This challenge is called the elliptic curve Diffie-Hellman problem, and is an even harder than the Diffie-Hellman Problem.
+                This challenge is called the elliptic curve Diffie-Hellman problem, and is even harder than the Diffie-Hellman Problem.
                 Crucially, the problem of finding a or b for an attacker is also difficult; this is known as the Elliptic Curve Discrete Logarithm Problem (ECDLP).
-                Because the ECDLP is so difficult, elliptic curve cryptography is vastly superior to more antiquated public key cryptosystems such as RSA and Diffie-Hellman.
-                While Diffie-Hellman requires key sizes of at least 2<sup>2048</sup> to be considered secure, ECDH provides equivalent security at only 224 bits.
-                As a result of this, ECDH is also faster, and is growing in popularity.
+                Because the ECDLP is so difficult, elliptic curve cryptography is faster and more secure than older public key cryptosystems such as RSA and Diffie-Hellman.
+                As a result of this, ECDH is quickly growing in popularity.
             </article>
             <figure>
                 <img src="images/security.png" alt="Table of equivalent key sizes">
