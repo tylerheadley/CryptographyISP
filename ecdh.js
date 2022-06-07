@@ -114,21 +114,21 @@ class Point {
     get y() {return this.y;}
 }
 
-function cipher() {
+function ecdhCipher() {
     const e = new EllipticCurve(0, 7, 97, new Point(23, 7));
 
     const alpha = Math.floor(Math.random() * (e.n-1)) + 1; // alice private key
     const beta = Math.floor(Math.random() * (e.n-1)) + 1; // bob private key
+    document.getElementById("key1").innerHTML = `Alice's private key: <strong>${alpha}<strong>`;
+    document.getElementById("key2").innerHTML = `Bob's private key: <strong>${beta}<strong>`;
 
     const a = e.scalarMult(alpha); // alice public key
     const b = e.scalarMult(beta); // bob public key
 
     const sharedSecret = e.scalarMult(alpha, b); // alice computation
     const verify = e.scalarMult(beta, a); // bob computation
-    
-    console.log(e.cyclicGroup);
-    console.log(sharedSecret);
-    console.log(verify);
+
+    document.getElementById("output").innerHTML = `Shared point = <strong>${sharedSecret.toString()}<strong>`;
 }
 
 cipher();

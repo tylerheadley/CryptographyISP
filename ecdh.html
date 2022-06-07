@@ -39,7 +39,7 @@
                 In this case, Alice's value for s is equal to (g<sup>b</sup>)<sup>a</sup> mod p, and Bob's value is (g<sup>a</sup>)<sup>b</sup> mod p, which are equivalent.
                 Now consider the viewpoint of an attacker; the only information shared publicly during this protocol is p, g, A, & B. 
                 There are no known algorithms that are able to compute s efficiently given only these parameters. 
-                As a result, for large key sizes, it is infeasible for an attacker to break this cipher.
+                As a result, for large key sizes, it is infeasible for an attacker to break this cipher; the challenge of doing so is referred to as the Diffie-Hellman problem (DHP).
                 Bob and Alice can now use s for symmetric encryption.
             </article>
             <h5>Elliptic Curves and Group Operations</h5>
@@ -146,12 +146,22 @@
             <article>
                 Alice and Bob both arrive at the same point because scalar multiplication is associative, meaning order doesn't matter.
                 From an attackers perspective, it is computationally difficult to find abG given only aG, bG, and the domain parameters; so difficult that for large parameters, it is infeasible to do so.
-                This challenge is called the elliptic curve Diffie-Hellman problem, and is an even harder than the Diffie-Hellman Problem (DHP).
+                This challenge is called the elliptic curve Diffie-Hellman problem, and is an even harder than the Diffie-Hellman Problem.
                 Crucially, the problem of finding a or b for an attacker is also difficult; this is known as the Elliptic Curve Discrete Logarithm Problem (ECDLP).
                 Because the ECDLP is so difficult, elliptic curve cryptography is vastly superior to more antiquated public key cryptosystems such as RSA and Diffie-Hellman.
                 While Diffie-Hellman requires key sizes of at least 2<sup>2048</sup> to be considered secure, ECDH provides equivalent security at only 224 bits.
                 As a result of this, ECDH is also faster, and is growing in popularity.
             </article>
+            <figure>
+                <img src="security.png" alt="Table of equivalent key sizes">
+                <figcaption>Figure 5: Table of key sizes with equivalent security for DH vs ECDH.</figcaption>
+            </figure>
+            <h5>My Implementation</h5>
+            <label for="input">Generate shared secret: </label>
+            <button onClick="ecdhCipher()">Generate</button>
+            <div class="display" id="key1"></div>
+            <div class="display" id="key2"></div>
+            <div class="display" id="output"></div>
         </main>
         <br>
         <footer></footer>
