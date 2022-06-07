@@ -8,6 +8,7 @@ function caesarCipherEncrypt() {
   }
   else if (key > 25 || key < 1) {
     document.getElementById("displayKey").innerHTML = 'ERR: Enter a key value from 1-25, or leave the field blank for a random key';
+    document.getElementById("displayOutput").innerHTML = '';
     return;
   }
   else {
