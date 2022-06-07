@@ -68,12 +68,12 @@
             </article>
             <figure>
                 <img src="images/SBox.png" alt="Sbox table">
-                <figcaption>Figure 1: Sbox substitution values</figcaption>
+                <figcaption>Figure 1: S-box substitution values</figcaption>
             </figure>
             <br>
             <article>
-                Take, for example, the character "m", which has an ascii value of 109 in decimal. This corresponds to a hexadecimal value of {6d}. 
-                In this example, we would go to the row of the S-box labeled "6" and the column labeled "d", and we would replace {6d} with {3c}.
+                Take, for example, the character "m", which has an ascii value of 109 in decimal. This corresponds to a hexadecimal value of 6d<sub>16</sub>. 
+                In this example, we would go to the row of the S-box labeled "6" and the column labeled "d", and we would replace 6d<sub>16</sub> with 3c<sub>16</sub>.
                 Each of the bytes in the 4x4 grid will be replaced by a new byte according to this substitution method.
             </article>
             <br>
@@ -108,7 +108,7 @@
                 Since each element of the state is a byte, this matrix multiplication requires repeated multiplication of bytes.
                 Byte multiplication for AES is also done using polynomials over finite fields. A byte can be represented by the polynomial
                 b<sub>7</sub>x<sup>7</sup> + b<sub>6</sub>x<sup>6</sup> + b<sub>5</sub>x<sup>5</sup> + b<sub>4</sub>x<sup>4</sup> + b<sub>3</sub>x<sup>3</sup> + b<sub>2</sub>x<sup>2</sup> + b<sub>1</sub>x + b<sub>0</sub>,
-                where b<sub>0-7</sub> are bits in the byte. For example, the polynomial x<sup>6</sup> + x<sup>5</sup> + x + 1 would be equivalent to the byte {99}, which in binary is 01100011.
+                where b<sub>0-7</sub> are bits in the byte. For example, the polynomial x<sup>6</sup> + x<sup>5</sup> + x + 1 would be equivalent to the byte 99<sub>16</sub>, which in binary is 01100011.
                 This multiplication is performed over GF(2<sup>8</sup>) (<a href="https://en.wikipedia.org/wiki/Finite_field">Galois Field</a>) by 
                 taking the output modulo x<sup>8</sup> + x<sup>4</sup> + x<sup>3</sup> + x + 1. Since this polynomial is irreducible and degree 8, 
                 this operation is guaranteed to produce a polynomial of degree 7.  
@@ -122,7 +122,7 @@
                 and by adding each element of array 1 with each element of array 2, we get [11, 9, 8, 9, 7, 6]. Notice that there are two instances
                 of the term x<sup>9</sup>. This polynomial should be simplified, but since the coefficient of each term is a bit and can only be a 
                 0 or 1, addition is performed as an <a href="https://en.wikipedia.org/wiki/Exclusive_or">XOR</a>, so the final array is [11, 8, 7, 6]. We still aren't finished, however; our final output 
-                must be a polynomial of degree 7 which can be converted back into byte representation, so the final step is to compute the remainder.
+                must be a polynomial of degree 7 which can be converted back into a byte, so the final step is to compute the remainder.
                 To do this, my algorithm uses a technique based off polynomial long division but for my array representation of polynomials. As a reminder,
                 the modulus for this computation is the polynomial x<sup>8</sup> + x<sup>4</sup> + x<sup>3</sup> + x + 1, which has an array representation 
                 of [8, 4, 3, 1, 0]. While the polynomial has a degree greater than 7, the difference of degree between the two polynomials is added to each term of the mod array.
@@ -149,7 +149,7 @@
             <article>
                 Although my implementation follows NIST specifications, it has not undergone thorough cryptanalysis and still may be subject to various attacks.
                 With that being said, my program was successfully able to reproduce the NIST test case provided in the document, indicating that it is in fact working properly;
-                theoretically, someone possessing the AES decryption function and key would be able to recover the original text encrypted by my algorithm.
+                theoretically, someone possessing the AES decryption function and my key would be able to recover the original text encrypted by my algorithm.
             </article>
             <br>
         </main>
