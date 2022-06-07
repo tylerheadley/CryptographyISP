@@ -48,7 +48,7 @@
                 An elliptic curve is a curve of the form y<sup>2</sup> = x<sup>3</sup> + ax + b, where a and b are constants and 4a<sup>3</sup> + 27b<sup>2</sup> ≠ 0.   
             </article>
             <figure> 
-                <img href="images/ec.png" alt="Graph of Elliptic Curve">
+                <img src="images/ec.png" class="big" alt="Graph of Elliptic Curve">
                 <figcaption>Figure 1: Graph of an elliptic curve with equation y<sup>2</sup> = x<sup>3</sup> - x + 3</figcaption>
             </figure>
             <article>
@@ -64,7 +64,7 @@
                 P+Q is defined as the point R reflected over the x-axis, which is called -R. 
             </article>
             <figure>
-                <img src="images/pointaddition.png" alt="graphical diagram of point addition on an elliptic curve">
+                <img src="images/pointaddition.png" class="big" alt="graphical diagram of point addition on an elliptic curve">
                 <figcaption>
                     Figure 2: Graphical representation of point addition. Curve equation: y<sup>2</sup> = x<sup>3</sup> + 1.
                     P = (-1, 0), Q = (0, 1). P+Q = -R = (2, -3).
@@ -81,7 +81,7 @@
                 This operation is called point doubling, and can be denoted as 2P. 
             </article>
             <figure>
-                <img src="images/pointdoubling.png" alt="graphical diagram of point doubling on an elliptic curve">
+                <img src="images/pointdoubling.png" class="big" alt="graphical diagram of point doubling on an elliptic curve">
                 <figcaption>
                     Figure 3: Graphical representation of point doubling. Curve equation: y<sup>2</sup> = x<sup>3</sup> -4x + 4.
                     P = (0, 2). 2P = -R = (1, -1).
@@ -90,7 +90,10 @@
             <article>
                 To compute point doubling, we begin once again by finding the slope. 
                 Since the finding the tangent line requires the instantaneous rate of change of the curve, calculus is required to derive the slope equation.
-                
+                We can perform implicit differentiation on the elliptic curve equation y<sup>2</sup> = x<sup>3</sup> + ax + b.
+                The derivative of y<sup>2</sup> with respect to x is 2y(dy/dx), and the derivative of x<sup>3</sup> + ax + b is 3x<sup>2</sup> + a.
+                Solving for dy/dx we get (3x<sup>2</sup> + a)/2y, and by substituting x<sub>P</sub> for x and y<sub>P</sub> for y, we get s = (3x<sub>P</sub><sup>2</sup> + a)/2y<sub>P</sub>.
+                From here, we can use the equations x<sub>P+Q</sub> = s<sup>2</sup> - 2x<sub>P</sub>
             </article>
             <h6>Point at Infinity</h6>
             <article>
@@ -101,7 +104,7 @@
                 This set is actually not including the point at infinity, so it should be written as E(F<sub>p</sub>) = {(x,y) : y<sup>2</sup> ≡ x<sup>3</sup> + ax + b (mod p)} ∪ {O}.
             </article>
             <figure>
-                <img src="images/paf.png" alt="graphical diagram of point at infinity">
+                <img src="images/paf.png" class="big" alt="graphical diagram of point at infinity">
                 <figcaption>
                     Figure 4: Since P and Q both have the same x coordinate, P+Q = O, the point at infinity. 
                 </figcaption>
