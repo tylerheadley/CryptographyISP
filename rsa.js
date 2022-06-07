@@ -110,10 +110,10 @@ function rsaEncrypt() {
   document.getElementById("displayInput").innerHTML = `Your input is <strong>${plaintext}</strong>`;
 
   const p = generateRandomPrime(100, 1000);
-  do {
-    const q = generateRandomPrime(100, 1000);
+  let q = 0;
+  while (q == 0 || p == q) {
+    q = generateRandomPrime(100, 1000);
   }
-  while (p == q);
   //document.getElementById("displayKey").innerHTML = p.toString();
   document.getElementById("displayKey").innerHTML = `p = <strong>${p}</strong>, q = <strong>${q}</strong>.`;
 
