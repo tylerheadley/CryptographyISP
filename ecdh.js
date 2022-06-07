@@ -112,6 +112,10 @@ class Point {
 
     get x() {return this.x;}
     get y() {return this.y;}
+
+    toString() {
+        return `(${this.x}, ${this.y})`
+    }
 }
 
 function ecdhCipher() {
@@ -131,5 +135,5 @@ function ecdhCipher() {
     document.getElementById("output").innerHTML = `Shared point = <strong>${sharedSecret.toString()}<strong>`;
 }
 
-cipher();
+// cipher();
 
