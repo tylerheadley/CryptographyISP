@@ -85,6 +85,10 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    background-color: #446fa0;
+}
+
 input[type="text"] {
     width: 180px;
     height: 40px;
