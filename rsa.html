@@ -26,9 +26,11 @@
 			and despite newer, more efficient algorithms, it is still widely used today for key transmission. Public key cryptography allows two parties
 			with no prior contact to communicate securely over an unsecure channel.
 		</article>
+		<br>
 		<h5>How It Works</h5>
+		<br>
 		<article>
-			RSA is based on the premise that it is computationally difficult to factor large number, but comparitively easy to multiply large numbers.
+			RSA is based on the premise that it is computationally difficult to factor large number, but comparatively easy to multiply large numbers.
 			To begin, the receiving party will first generate two large prime numbers, which are called p and q. Then, they will compute n = pq, which 
 			will serve as the public key. They will also compute ϕ(n), where ϕ is Euler's totient function. ϕ(n) is equal to the number of positive integers
 			less than and coprime to n. Since n is the product of p and q, ϕ(n) can be found efficiently using the formula ϕ(n) = (p-1)(q-1). p, q, and ϕ(n)
@@ -52,7 +54,9 @@
 			This can be done efficiently using the <a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">extended euclidean algorithm</a>. To decrypt the ciphertext,
 			the receiver can compute m = c<sup>d</sup> mod n.
 		</article>
+		<br>
 		<h5>Why It Works</h5>
+		<br>
 		<article>
 			The security and effectiveness of RSA depends on a few different mathematical and computational properties. 
 			As I mentioned previously, it is much more difficult to factor a number into its two prime components than to multiply two prime numbers together. 
@@ -60,16 +64,12 @@
 			When p and q are extremely large (often 2^1024, which is a 309 digit number), it becomes infeasible to factor n back into its prime components, as doing so would take all of the computers in the world more time and energy than exists in the universe. 
 			This is critical to RSA because without this property, an attacker could easily find ϕ(n) and therefore use the extended euclidean algorithm to compute d and decrypt the message. 
 
-			Another important concept to understand RSA is that of the discrete logarithm problem. 
-			The discrete logarithm problem is, given an exponent (e), and a modulus (n), and the ciphertext c, to find . 
-			
-		</article>
-		<img
-		<br>
-		<article>
-
+			Another important concept to understand what makes RSA secure is the RSA problem. 
+			The RSA problem is, given an exponent (e), and a modulus (n), and the ciphertext c, to find m.
+			This problem is believed to be computationally difficult, as there are no known algorithms to solve it in polynomial time. 
 		</article>
         <br>
+		<h5>My Implementation</h5>
 		<label for="inputtext">Enter the text you would like to encrypt: </label>
 		<input type="text" maxlength="50" id="inputtext" name="inputtext" autocomplete="off">
         <button type="submit" onclick="rsaEncrypt()">Submit</button>
