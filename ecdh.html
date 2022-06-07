@@ -41,18 +41,78 @@
                 As a result, for large key sizes, it is infeasible for an attacker to break this cipher.
                 Bob and Alice can now use s for symmetric encryption.
             </article>
-            <h5>Elliptic Curves and Group Theory</h5>
+            <h5>Elliptic Curves and Group Operations</h5>
             <article>
                 Before we can delve into the ECDH protocol, we must first establish some mathematical preliminaries to understand the operations being performed.
                 Let's begin by defining an elliptic curve. 
                 An elliptic curve is a curve of the form y<sup>2</sup> = x<sup>3</sup> + ax + b, where a and b are constants and 4a<sup>3</sup> + 27b<sup>2</sup> ≠ 0.   
             </article>
-            <figure>
+            <figure> 
                 <img href="images/ec.png" alt="Graph of Elliptic Curve">
                 <figcaption>Figure 1: Graph of an elliptic curve with equation y<sup>2</sup> = x<sup>3</sup> - x + 3</figcaption>
             </figure>
             <article>
-
+                For cryptography, elliptic curves are considered to be a set of discrete integer points which satisfy the equation for the curve over a finite field.
+                This set is denoted as E(F<sub>p</sub>) = {(x,y) : y<sup>2</sup> ≡ x<sup>3</sup> + ax + b (mod p)}. 
+                The order of a set is the number of elements contained by the set, and is denoted as #E(F<sub>p</sub>).
+                For elliptic curve cryptography, we define three operations for this set: point addition, point doubling, and scalar multiplication.
+            </article>
+            <h6>Point Addition</h6>
+            <article>
+                Given two (x,y) points P and Q such that P, Q ∈ E(F<sub>p</sub>), we can define a third point that is the result of point addition between P & Q.
+                To find P+Q, one first draws a line connecting the two points. If x<sub>P</sub> ≠ x<sub>Q</sub>, this line will intersect the curve at a third point, R.
+                P+Q is defined as the point R reflected over the x-axis, which is called -R. 
+            </article>
+            <figure>
+                <img src="images/pointaddition.png" alt="graphical diagram of point addition on an elliptic curve">
+                <figcaption>
+                    Figure 2: Graphical representation of point addition. Curve equation: y<sup>2</sup> = x<sup>3</sup> + 1.
+                    P = (-1, 0), Q = (0, 1). P+Q = -R = (2, -3).
+                </figcaption>
+            </figure>
+            <article>
+                To compute P+Q, the slope of the line between P & Q is first calculated using the rise-over-run equation s = (y<sub>P</sub> - y<sub>Q</sub>)/(x<sub>P</sub> - x<sub>Q</sub>).
+                For the above example, we get s = (0 - 1)/(-1 - 0) = 1. From here, we can find x<sub>P+Q</sub> = s<sup>2</sup> - x<sub>P</sub> - x<sub>Q</sub>, and y<sub>P+Q</sub> = s(x<sub>P</sub> - x<sub>P+Q</sub>) - y<sub>P</sub>.
+            </article>
+            <h6>Point Doubling</h6>
+            <article>
+                What happens if the two points we want to add are equal, meaning P = Q.
+                In this scenario, we can find a tangent line to the elliptic curve and then follow the same process as before to find -R.
+                This operation is called point doubling, and can be denoted as 2P. 
+            </article>
+            <figure>
+                <img src="images/pointdoubling.png" alt="graphical diagram of point doubling on an elliptic curve">
+                <figcaption>
+                    Figure 3: Graphical representation of point doubling. Curve equation: y<sup>2</sup> = x<sup>3</sup> -4x + 4.
+                    P = (0, 2). 2P = -R = (1, -1).
+                </figcaption>
+            </figure>
+            <article>
+                To compute point doubling, we begin once again by finding the slope. 
+                Since the finding the tangent line requires the instantaneous rate of change of the curve, calculus is required to derive the slope equation.
+                
+            </article>
+            <h6>Point at Infinity</h6>
+            <article>
+                But what happens if P ≠ Q, but x<sub>P</sub> = x<sub>Q</sub>? 
+                In this case, the line drawn between the two points is vertical, and does not intersect the curve at a third point. 
+                This will pose a problem for our group operations, so to bypass this issue we say that P+Q is the "point at infinity", which is denoted as a fancy looking O.
+                In the earlier section on elliptic curves, I said that E(F<sub>p</sub>) = {(x,y) : y<sup>2</sup> ≡ x<sup>3</sup> + ax + b (mod p)}.
+                This set is actually not including the point at infinity, so it should be written as E(F<sub>p</sub>) = {(x,y) : y<sup>2</sup> ≡ x<sup>3</sup> + ax + b (mod p)} ∪ {O}.
+            </article>
+            <figure>
+                <img src="images/paf.png" alt="graphical diagram of point at infinity">
+                <figcaption>
+                    Figure 4: Since P and Q both have the same x coordinate, P+Q = O, the point at infinity. 
+                </figcaption>
+            </figure>
+            <h6>Scalar Multiplication</h6>
+            <article>
+                The final elliptic curve operation, scalar multiplication, builds on the previously discussed operations.
+                Scalar multiplication is essentially just point addition, repeated k times.
+                To compute kP, where P ∈ E(F<sub>p</sub>), we will begin by finding 2P using point doubling. 
+                From there we will compute 3P to be point addition between P and 2P.
+                Then, 4P = P+3P, 5P = P+4P, and so on until k is reached.
             </article>
             <h5>How ECDH works</h5>
             <article>
@@ -62,5 +122,6 @@
                 
             </article>
         </main>
+        <footer></footer>
     </body>
 </html>
