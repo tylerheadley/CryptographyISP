@@ -162,6 +162,16 @@
             <div class="display" id="key1"></div>
             <div class="display" id="key2"></div>
             <div class="display" id="output"></div>
+            <br>
+            <article>
+                In my implementation, I used the curve y<sup>2</sup> = x<sup>3</sup> + 7, which has the name secp256k1. 
+                Since this implementation is just an example and not intended for real cryptography, I used a very small prime for p, 97.
+                I chose the point (23, 7) as the generator point.
+            </article>
+            <figure>
+                <img src="images/smalg.png" alt="screenshot of scalar multiplication algorithm">
+                <figcaption>Figure 6: scalar multiplication algorithm, which calls a point doubling and point addition algorithm.</figcaption>
+            </figure>
         </main>
         <br>
         <footer></footer>
