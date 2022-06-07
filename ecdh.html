@@ -18,12 +18,15 @@
         </header>
         <main>
             <h1>Elliptic Curve Diffie-Hellman</h1>
+            <br>
             <article>
                 Elliptic Curve Diffie-Hellman is a key exchange protocol. 
                 It is used when two parties wish to compute some shared secret which can be used for symmetric cryptography. 
                 It is based on Diffie-Hellman key exchange, but uses elliptic curves to provide better security. 
             </article>
+            <br>
             <h5>Diffie-Hellman Overview</h5>
+            <br>
             <article>
                 Diffie-Hellman is a key exchange protocol invented by cryptographers Whitfield Diffie and Martin Hellman. 
                 It is useful when two parties want to create a shared secret when communicating over an unsecure channel. 
@@ -42,7 +45,9 @@
                 As a result, for large key sizes, it is infeasible for an attacker to break this cipher; the challenge of doing so is referred to as the Diffie-Hellman problem (DHP).
                 Bob and Alice can now use s for symmetric encryption.
             </article>
+            <br>
             <h5>Elliptic Curves and Group Operations</h5>
+            <br>
             <article>
                 Before we can delve into the ECDH protocol, we must first establish some mathematical preliminaries to understand the operations being performed.
                 Let's begin by defining an elliptic curve. 
@@ -58,6 +63,7 @@
                 The order of a set is the number of elements contained by the set, and is denoted as #E(F<sub>p</sub>).
                 For elliptic curve cryptography, we define three operations for this set: point addition, point doubling, and scalar multiplication.
             </article>
+            <br>
             <h6>Point Addition</h6>
             <article>
                 Given two (x,y) points P and Q such that P, Q ∈ E(F<sub>p</sub>), we can define a third point that is the result of point addition between P & Q.
@@ -78,6 +84,7 @@
                 Remember that we are considering the curve over a finite field, so all of these operation will be performed mod p.
                 Since division is not a group operation for modular arithmetic, we change any division operations to multiply by the inverse.
             </article>
+            <br>
             <h6>Point Doubling</h6>
             <article>
                 What happens if the two points we want to add are equal, meaning P = Q.
@@ -99,6 +106,7 @@
                 Solving for dy/dx we get (3x<sup>2</sup> + a)/2y, and by substituting x<sub>P</sub> for x and y<sub>P</sub> for y, we get s = (3x<sub>P</sub><sup>2</sup> + a)/2y<sub>P</sub>.
                 From here, we can use the equations x<sub>2P</sub> = s<sup>2</sup> - 2x<sub>P</sub> and y<sub>2P</sub> = s(x<sub>P</sub> - x<sub>2P</sub>) - y<sub>P</sub>
             </article>
+            <br>
             <h6>Point at Infinity</h6>
             <article>
                 But what happens if P ≠ Q, but x<sub>P</sub> = x<sub>Q</sub>? 
@@ -113,6 +121,7 @@
                     Figure 4: Since P and Q both have the same x coordinate, P+Q = O, the point at infinity. 
                 </figcaption>
             </figure>
+            <br>
             <h6>Scalar Multiplication</h6>
             <article>
                 The final elliptic curve operation, scalar multiplication, builds on the previously discussed operations.
@@ -121,7 +130,9 @@
                 From there we will compute 3P to be point addition between P and 2P.
                 Then, 4P = P+3P, 5P = P+4P, and so on until k is reached.
             </article>
+            <br>
             <h5>How ECDH works</h5>
+            <br>
             <article>
                 Elliptic Curve Diffie-Hellman relies on analogous concepts and techniques as Diffie-Hellman, but uses elliptic curve operations as a stronger cryptographic trapdoor function.
                 Suppose Alice and Bob wish to instead use ECDH to find a shared secret.
@@ -142,7 +153,9 @@
                 In the end, they have both arrived at the same point, abG.
                 Typically, they will discard the y coordinate and put the x coordinate into a hash function to find their shared secret.
             </article>
+            <br>
             <h5>Why it Works</h5>
+            <br>
             <article>
                 Alice and Bob both arrive at the same point because scalar multiplication is associative, meaning order doesn't matter.
                 From an attackers perspective, it is computationally difficult to find abG given only aG, bG, and the domain parameters; so difficult that for large parameters, it is infeasible to do so.
@@ -156,6 +169,7 @@
                 <img src="images/security.png" alt="Table of equivalent key sizes">
                 <figcaption>Figure 5: Table of key sizes with equivalent security for DH vs ECDH.</figcaption>
             </figure>
+            <br>
             <h5>My Implementation</h5>
             <label for="input">Generate shared secret: </label>
             <button onClick="ecdhCipher()">Generate</button>
