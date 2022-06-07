@@ -77,7 +77,13 @@
         <div class="display" id="displayInput"></div>
         <div class="display" id="displayKey"></div>
         <div class="display" id="displayOutput"></div>
-
+		<article>
+			In my implementation, I chose 3 as my exponent. 
+			To generate p and q, I created an algorithm that iterates through integers from a min and max value and tests if each is prime.
+			It then randomly selects two of these primes.
+			Since JavaScript only allows integers up to 2<sup>53</sup>-1, I was forced to segment m into chunks of seven characters, which 
+			is why the output of the algorithm is an array.
+		</article>
     </main>
 	<footer></footer>
   </body>
