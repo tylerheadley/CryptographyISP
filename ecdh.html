@@ -23,9 +23,9 @@
                 It is used when two parties wish to compute some shared secret which can be used for symmetric cryptography. 
                 It is based on Diffie-Hellman key exchange, but uses elliptic curves to provide better security. 
             </article>
-            <h5>Diffie Hellman Overview</h5>
+            <h5>Diffie-Hellman Overview</h5>
             <article>
-                Diffie Hellman is a key exchange protocol invented by cryptographers Whitfield Diffie and Martin Hellman. 
+                Diffie-Hellman is a key exchange protocol invented by cryptographers Whitfield Diffie and Martin Hellman. 
                 It is useful when two parties want to create a shared secret when communicating over an unsecure channel. 
                 Created in 1976, it was the first ever public key cryptosystem. 
                 For two parties named Alice and Bob, the protocol works as follows:
@@ -49,7 +49,7 @@
                 An elliptic curve is a curve of the form y<sup>2</sup> = x<sup>3</sup> + ax + b, where a and b are constants and 4a<sup>3</sup> + 27b<sup>2</sup> ≠ 0.   
             </article>
             <figure> 
-                <img src="images/ec.png" class="big" alt="Graph of Elliptic Curve">
+                <img src="images/ec.png" alt="Graph of Elliptic Curve">
                 <figcaption>Figure 1: Graph of an elliptic curve with equation y<sup>2</sup> = x<sup>3</sup> - x + 3</figcaption>
             </figure>
             <article>
@@ -65,7 +65,7 @@
                 P+Q is defined as the point R reflected over the x-axis, which is called -R. 
             </article>
             <figure>
-                <img src="images/pointaddition.png" class="big" alt="graphical diagram of point addition on an elliptic curve">
+                <img src="images/pointaddition.png" alt="graphical diagram of point addition on an elliptic curve">
                 <figcaption>
                     Figure 2: Graphical representation of point addition. Curve equation: y<sup>2</sup> = x<sup>3</sup> + 1.
                     P = (-1, 0), Q = (0, 1). P+Q = -R = (2, -3).
@@ -73,7 +73,10 @@
             </figure>
             <article>
                 To compute P+Q, the slope of the line between P & Q is first calculated using the rise-over-run equation s = (y<sub>P</sub> - y<sub>Q</sub>)/(x<sub>P</sub> - x<sub>Q</sub>).
-                For the above example, we get s = (0 - 1)/(-1 - 0) = 1. From here, we can find x<sub>P+Q</sub> = s<sup>2</sup> - x<sub>P</sub> - x<sub>Q</sub>, and y<sub>P+Q</sub> = s(x<sub>P</sub> - x<sub>P+Q</sub>) - y<sub>P</sub>.
+                For the above example, we get s = (0 - 1)/(-1 - 0) = 1. 
+                From here, we can find x<sub>P+Q</sub> = s<sup>2</sup> - x<sub>P</sub> - x<sub>Q</sub>, and y<sub>P+Q</sub> = s(x<sub>P</sub> - x<sub>P+Q</sub>) - y<sub>P</sub>.
+                Remember that we are considering the curve over a finite field, so all of these operation will be performed mod p.
+                Since division is not a group operation for modular arithmetic, we change any division operations to multiply by the inverse.
             </article>
             <h6>Point Doubling</h6>
             <article>
@@ -82,7 +85,7 @@
                 This operation is called point doubling, and can be denoted as 2P. 
             </article>
             <figure>
-                <img src="images/pointdoubling.png" class="big" alt="graphical diagram of point doubling on an elliptic curve">
+                <img src="images/pointdoubling.png" alt="graphical diagram of point doubling on an elliptic curve">
                 <figcaption>
                     Figure 3: Graphical representation of point doubling. Curve equation: y<sup>2</sup> = x<sup>3</sup> -4x + 4.
                     P = (0, 2). 2P = -R = (1, -1).
@@ -94,7 +97,7 @@
                 We can perform implicit differentiation on the elliptic curve equation y<sup>2</sup> = x<sup>3</sup> + ax + b.
                 The derivative of y<sup>2</sup> with respect to x is 2y(dy/dx), and the derivative of x<sup>3</sup> + ax + b is 3x<sup>2</sup> + a.
                 Solving for dy/dx we get (3x<sup>2</sup> + a)/2y, and by substituting x<sub>P</sub> for x and y<sub>P</sub> for y, we get s = (3x<sub>P</sub><sup>2</sup> + a)/2y<sub>P</sub>.
-                From here, we can use the equations x<sub>P+Q</sub> = s<sup>2</sup> - 2x<sub>P</sub>
+                From here, we can use the equations x<sub>2P</sub> = s<sup>2</sup> - 2x<sub>P</sub> and y<sub>2P</sub> = s(x<sub>P</sub> - x<sub>2P</sub>) - y<sub>P</sub>
             </article>
             <h6>Point at Infinity</h6>
             <article>
@@ -105,7 +108,7 @@
                 This set is actually not including the point at infinity, so it should be written as E(F<sub>p</sub>) = {(x,y) : y<sup>2</sup> ≡ x<sup>3</sup> + ax + b (mod p)} ∪ {O}.
             </article>
             <figure>
-                <img src="images/paf.png" class="big" alt="graphical diagram of point at infinity">
+                <img src="images/paf.png" alt="graphical diagram of point at infinity">
                 <figcaption>
                     Figure 4: Since P and Q both have the same x coordinate, P+Q = O, the point at infinity. 
                 </figcaption>
@@ -120,12 +123,37 @@
             </article>
             <h5>How ECDH works</h5>
             <article>
-                Elliptic Curve Diffie Hellman relies on analogous concepts and techniques, but uses elliptic curve operations as a stronger trapdoor function.
-                Suppose Alice and Bob now wish to instead use ECDH to find a shared secret.
-                Once again, they will first decide upon a prime modulus. 
-                
+                Elliptic Curve Diffie-Hellman relies on analogous concepts and techniques as Diffie-Hellman, but uses elliptic curve operations as a stronger cryptographic trapdoor function.
+                Suppose Alice and Bob wish to instead use ECDH to find a shared secret.
+                Once again, they will first decide upon a prime modulus, p. 
+                They will also decide on a generator point G ∈ E(F<sub>p</sub>), which is analogous to the base parameter in Diffie-Hellman.
+                Since we are dealing with elliptic curves, they must also decide upon the curve parameters, a and b. 
+                From these parameters, they can also calculate the order of the curve, n.
+                These domain parameters form the public key will be visible to any attackers.
+            </article>
+            <br>
+            <article>
+                Next, Alice and Bob will each select an integer private key, which we will call a and b, respectively.
+                This key should be less than the order of the curve.
+                Each will then compute the scalar multiplication of their key with the generator point G, analogous to modular exponentiation in Diffie-Hellman.
+                Alice will send the point aG to Bob, and Bob will send point bG to Alice. 
+                Alice can now compute a(bG), the scalar multiplication between her private key and Bob's public key.
+                Bob will do the same with his private key and Alice's public key.
+                In the end, they have both arrived at the same point, abG.
+                Typically, they will discard the y coordinate and put the x coordinate into a hash function to find their shared secret.
+            </article>
+            <h5>Why it Works</h5>
+            <article>
+                Alice and Bob both arrive at the same point because scalar multiplication is associative, meaning order doesn't matter.
+                From an attackers perspective, it is computationally difficult to find abG given only aG, bG, and the domain parameters; so difficult that for large parameters, it is infeasible to do so.
+                This challenge is called the elliptic curve Diffie-Hellman problem, and is an even harder than the Diffie-Hellman Problem (DHP).
+                Crucially, the problem of finding a or b for an attacker is also difficult; this is known as the Elliptic Curve Discrete Logarithm Problem (ECDLP).
+                Because the ECDLP is so difficult, elliptic curve cryptography is vastly superior to more antiquated public key cryptosystems such as RSA and Diffie-Hellman.
+                While Diffie-Hellman requires key sizes of at least 2<sup>2048</sup> to be considered secure, ECDH provides equivalent security at only 224 bits.
+                As a result of this, ECDH is also faster, and is growing in popularity.
             </article>
         </main>
+        <br>
         <footer></footer>
     </body>
 </html>
