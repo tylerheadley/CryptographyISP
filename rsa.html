@@ -27,20 +27,20 @@
 			with no prior contact to communicate securely over an unsecure channel.
 		</article>
 		<br>
-		<h5>How It Works</h5>
+		<h5>How RSA Works</h5>
 		<br>
 		<article>
-			RSA is based on the premise that it is computationally difficult to factor large number, but comparatively easy to multiply large numbers.
+			RSA is based on the premise that it is computationally difficult to factor large numbers, but comparatively easy to multiply large numbers.
 			To begin, the receiving party will first generate two large prime numbers, which are called p and q. Then, they will compute n = pq, which 
-			will serve as the public key. They will also compute ϕ(n), where ϕ is Euler's totient function. ϕ(n) is equal to the number of positive integers
-			less than and coprime to n. Since n is the product of p and q, ϕ(n) can be found efficiently using the formula ϕ(n) = (p-1)(q-1). p, q, and ϕ(n)
-			should all be kept secret. The receiver will also choose an exponent <em>e</em> which will serve as the other component of the public key.
+			will serve as part of the public key. They will also compute ϕ(n), where ϕ is Euler's totient function. ϕ(n) is equal to the number of positive integers
+			less than and coprime to n. Since n is the product of p and q, ϕ(n) can be found efficiently using the formula ϕ(n) = (p-1)(q-1). ϕ(n), p, and q
+			should all be kept secret. The receiver will also choose an exponent e which will serve as the other component of the public key.
 			Typically, e is chosen to be 65537 (2<sup>16</sup> - 1), but it can be any integer that is less than and coprime to ϕ(n). For my implementation I use 3 for simplicity. 
 		</article>
 		<br>
 		<article>
 			Once both components of the public key have been published, a sender can now encrypt and send a message to the receiver using that receiver's public key.
-			To do this, the receiver will compute c = m<sup>e</sup> mod n, where m is the message and c is the ciphertext. This can be computed efficiently using a modular 
+			To do this, the sender will compute c = m<sup>e</sup> mod n, where m is the message and c is the ciphertext. This can be computed efficiently using a modular 
 			exponentiation algorithm such as the one below. 
 		</article>
 		<figure>
@@ -52,8 +52,8 @@
 		</figure>
 		<article>
 			Once c has been computed, it can be transmitted to the receiver. To decrypt c, the receiver must compute d, the modular multiplicative inverse of e modulo ϕ(n).
-			This can be done efficiently using the <a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">extended euclidean algorithm</a>. To decrypt the ciphertext,
-			the receiver can compute m = c<sup>d</sup> mod n.
+			This can be done efficiently using the <a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">extended euclidean algorithm</a>. Once the receiver has found d,
+			they can decrypt c using m = c<sup>d</sup> mod n.
 		</article>
 		<br>
 		<h5>Why It Works</h5>
@@ -64,10 +64,11 @@
 			Something that is easy to do but difficult to undo in cryptography is known as a trapdoor function, where "easy" and "difficult" are determined based on the time complexity. 
 			When p and q are extremely large (often 2^1024, which is a 309 digit number), it becomes infeasible to factor n back into its prime components, as doing so would take all of the computers in the world more time and energy than exists in the universe. 
 			This is critical to RSA because without this property, an attacker could easily find ϕ(n) and therefore use the extended euclidean algorithm to compute d and decrypt the message. 
-
+		</article>
+		<article>
 			Another important concept to understand what makes RSA secure is the RSA problem. 
 			The RSA problem is, given an exponent (e), and a modulus (n), and the ciphertext c, to find m.
-			This problem is believed to be computationally difficult, as there are no known algorithms to solve it in polynomial time. 
+			This problem is believed to be computationally difficult, as there are no known algorithms to solve it in polynomial time.
 		</article>
         <br>
 		<h5>My Implementation</h5>
