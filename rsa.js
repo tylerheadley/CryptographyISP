@@ -95,7 +95,6 @@ function modInverse(a, m) {
 }
 
 function modExp(base, exp, mod) {
-
   let c = 1;
   
   for (let e = 0; e < exp; e++) {
@@ -111,7 +110,10 @@ function rsaEncrypt() {
   document.getElementById("displayInput").innerHTML = `Your input is <strong>${plaintext}</strong>`;
 
   const p = generateRandomPrime(100, 1000);
-  const q = generateRandomPrime(100, 1000);
+  do {
+    const q = generateRandomPrime(100, 1000);
+  }
+  while (p == q);
   //document.getElementById("displayKey").innerHTML = p.toString();
   document.getElementById("displayKey").innerHTML = `p = <strong>${p}</strong>, q = <strong>${q}</strong>.`;
 
@@ -119,7 +121,7 @@ function rsaEncrypt() {
 
   const phi = (p-1) * (q-1);
 
-  const e = 65537;
+  const e = 3;
 
   let m = [];
   for (let i = 0; i < plaintext.length; i++) {
